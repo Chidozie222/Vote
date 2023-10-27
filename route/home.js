@@ -2,9 +2,9 @@ const { Router } = require('express')
 
 const home = Router()
 
-require('./index')
+require('../index')
 home.get('/', (req, res) => {
-    res.send('hello!')
+    res.send('hello')
 })
 
 module.exports = home
