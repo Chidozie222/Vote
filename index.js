@@ -13,6 +13,7 @@ app.use(home)
 app.use(signup)
 app.use(signin)
 app.use(userinfo)
+app.use(voterprofile)
 require('dotenv').config()
 let mongo = process.env.mongoUrl
 mongoose.connect(mongo, {
