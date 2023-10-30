@@ -9,9 +9,9 @@ require('../models/userauth');
 const user = mongoose.model('user');
 
 userinfo.post('/user', async (req, res) => {
-    const { email } = req.body; // Extract the email string from the request body
+    const { Useremail } = req.body; // Extract the email string from the request body
     try {
-        let User = await user.findOne({ email })
+        let User = await user.findOne({ Useremail })
             .then((data) => {
                 if (data) {
                     res.send({ status: 'ok', data: data }); // Send the retrieved data

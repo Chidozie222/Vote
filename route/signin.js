@@ -11,13 +11,13 @@ const user = mongoose.model('user')
 
 
 signin.post('/login', async(req, res) => {
-    const {email, password} = req.body;
+    const {Useremail, password} = req.body;
 
     try {
-        const User = await user.findOne({email})
+        const User = await user.findOne({Useremail})
 
-        if (!email) {
-            res.send({status: 'ok', message: 'Sorry your details do not exist, please sign up'})
+        if (!Useremail) {
+            res.send({status: 'error', message: 'Sorry your details do not exist, please sign up'})
         } else {
             if (User.password == password) {
                 res.send({status: 'ok', data: User})

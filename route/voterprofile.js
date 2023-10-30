@@ -21,6 +21,7 @@ const upload = multer({ storage: storage });
 
 voterprofile.post('/csvfile', upload.single('csvfile'), async (req, res) => {
     const csvfile = req.file;
+    const {Title, Useremail} = req.body
     try {
         if (csvfile) {
             const csvFilePath = csvfile.path;
@@ -33,7 +34,9 @@ voterprofile.post('/csvfile', upload.single('csvfile'), async (req, res) => {
                         const csvData = new csvmodel({
                             Name: entry.Name,
                             code: entry.code,
-                            email: entry.email
+                            email: entry.email,
+                            Title,
+                            Useremail
                         });
                         await csvData.save();
                     }
@@ -48,5 +51,22 @@ voterprofile.post('/csvfile', upload.single('csvfile'), async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+voterprofile.post('/csvusers', async(req, res) => {
+    const{Useremail, Title} = req.body
+    try{
+    let email = await csvmodel.findOne({Useremail})
+    if(email){
+        let title = await csvmodel.findOne({Title})
+        if (title) {
+            res.send({status: "ok", data: title})
+        } else {
+            res.send({status: 'error', data: "error geting user is"})
+        }
+    }
+} catch(Error){
+    res.status(400).send({status: "error", data: "error in the server"})
+}
+})
 
 module.exports = voterprofile;
