@@ -2,6 +2,7 @@ const { Router } = require("express");
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const { sendOTP, verifyOTP } = require('../controller/otpfunction');
+const retrieveHashedOTPFromDatabase = require('../controller/otpfile')
 
 const otp = Router()
 
@@ -24,25 +25,35 @@ otp.post('/sendotp', async (req, res) => {
 
 otp.post('/verifyotp', async (req, res) => {
     const { email, otp, PhoneNumber, Name, Title, Useremail } = req.body;
-    const hashedOTP = await sendOTP(email);
+    console.log(email);
+    
     try {
-        const isValid = await verifyOTP(hashedOTP, otp);
+        const hashedOTP = await retrieveHashedOTPFromDatabase(email); // Replace with the actual function to fetch the hashed OTP from your database.
+        let otpString = otp.toString(); // Using a different variable name
+        const isValid = await verifyOTP(hashedOTP, otpString);
+
+        
         if (isValid) {
+            // OTP is valid, save user information or perform actions.
             await Otp.create({
                 Name,
                 email,
                 code: PhoneNumber,
                 Title,
                 Useremail
-            })
+            });
+            
             res.status(200).json({ message: 'OTP verified successfully' });
         } else {
+            // Invalid OTP
             res.status(400).json({ message: 'Invalid OTP' });
         }
     } catch (error) {
         res.status(500).json({ message: 'Error verifying OTP', error });
+        console.log(error);
     }
 });
+
 
 
 module.exports = otp
