@@ -2,8 +2,6 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 
 require('dotenv').config()
-console.log(process.env.email);
-console.log(process.env.password);
 
 // Function to generate OTP
 function generateOTP() {
@@ -11,16 +9,14 @@ function generateOTP() {
 }
 
 // Function to hash the OTP
-// Function to hash the OTP
 async function hashOTP(otp) {
-    const salt = await bcrypt.genSalt();
-    return await bcrypt.hash(otp.toString(), salt);
+    return await otp.toString()
 }
 
 // Function to verify the OTP
-async function verifyOTP(hashedOTP, otp) {
-    return await bcrypt.compare(otp, hashedOTP);
-}
+async function verifyOTP(OTP) {
+    return OTP
+} 
 
 // Function to send OTP via email
 async function sendOTP(email) {
@@ -40,7 +36,6 @@ async function sendOTP(email) {
     
 
     const otp = generateOTP();
-    const hashedOTP = await hashOTP(otp);
 
     const mailOptions = {
         from: process.env.email,
@@ -50,7 +45,7 @@ async function sendOTP(email) {
     };
 
     await transporter.sendMail(mailOptions);
-    return hashedOTP;
+    return otp;
 }
 
-module.exports = { sendOTP, verifyOTP };
+module.exports = { sendOTP, verifyOTP, hashOTP };

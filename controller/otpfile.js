@@ -1,23 +1,31 @@
 const mongoose = require('mongoose')
+// controller/otpfile.js
+const OTPModel = require('../models/otp');
 
-let Otp = mongoose.model('csv');
+async function storeHashedOTP(email, OTP) {
+    try {
+        await OTPModel.create({ email, OTP });
+    } catch (error) {
+        throw error;
+    }
+}
 
 async function retrieveHashedOTPFromDatabase(email) {
     try {
-        const user = await Otp.findOne({ email });
-
-        if (user && user.hashedOTP) {
-            // A user with the provided email was found, and they have a hashedOTP value.
-            return user.hashedOTP;
-        } else {
-            // Handle the case where the user or hashedOTP is not found.
-            return null;
-        }
+        const otpRecord = await OTPModel.findOne({ email });
+        return otpRecord ? otpRecord.OTP : null;
     } catch (error) {
-        throw error; // Handle any database query errors.
+        throw error;
     }
 }
 
 
-// Export the function for use in your OTP verification route
-module.exports = retrieveHashedOTPFromDatabase;
+async function deleteHashedOTP(email) {
+    try {
+        await OTPModel.findOneAndDelete({ email });
+    } catch (error) {
+        throw error;
+    }
+}
+
+module.exports = { storeHashedOTP, retrieveHashedOTPFromDatabase, deleteHashedOTP };
