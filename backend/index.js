@@ -9,6 +9,8 @@ const voterprofile = require('./route/voterprofile')
 const candidate = require('./route/candidate')
 const result = require('./route/result')
 const otp = require('./route/otp')
+const auth = require('./route/auth')
+const fb = require('./route/facebook')
 const app = express();
 app.use(express.json())
 app.use(cors())
@@ -20,6 +22,8 @@ app.use(voterprofile)
 app.use(candidate)
 app.use(result)
 app.use(otp)
+app.use(auth)
+app.use(fb)
 require('dotenv').config()
 let mongo = process.env.mongoUrl
 mongoose.connect(mongo, {
@@ -31,6 +35,6 @@ mongoose.connect(mongo, {
 .catch((Error) => {
     console.log(Error);
 })
-app.listen(2000, (err, res) => {
-    console.log('this port is running on 2000');
+app.listen(process.env.port, (err, res) => {
+    console.log(`this port is running on port: ${process.env.port}`);
 })

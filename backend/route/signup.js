@@ -13,17 +13,18 @@ const user = mongoose.model('user')
 signup.post('/register', async(req, res) => {
     const {Username, email, password} = req.body;
 try {
-    const oldUser = await user.findOne({email: email})
+    const oldUser = await user.findOne({Useremail: email})
 
     if (oldUser) {
         res.send({status: 'error', message: "please this email already exist"})
     } else {
         await user.create({
             Username,
-            email,
+            email: Useremail,
             password
         })
-        res.send({status: 'ok'})
+        let Newuser = await user.findOne({Useremail: email})
+        res.send({status: 'ok', data: Newuser})
     }
 } catch (error) {
     res.send({status: "error", message: "error with the server"})
