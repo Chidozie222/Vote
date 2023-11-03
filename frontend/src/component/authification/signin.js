@@ -1,24 +1,17 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './Signup.css';
+import './signin.css';
 
 
-const Signup = () => {
-    const [name, setname] = useState("")
+const Signin = () => {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
-    const [cpassword, setcpassword] = useState("")
 
     const submit = (e) => {
         e.preventDefault();
-        let username = document.getElementById('error')
         let useremail = document.getElementById('error1')
         let Password = document.getElementById('error2')
 
-        if (name.trim().length === 0) {
-            username.innerText = 'input a name'
-        } else {
-            username.innerText = ''
             if (email.trim().length === 0) {
                 useremail.innerText = 'input a vaild email'
             } else {
@@ -29,9 +22,8 @@ const Signup = () => {
                     if(password.trim().length === 0){
                         Password.innerText = 'Please input a password'
                     }else{
-                    if (password === cpassword) {
                         Password.innerText = ''
-                        fetch("http://localhost:2000/register", {
+                        fetch("http://localhost:2000/login", {
                             method: "POST",
                             crossDomain: true,
                             headers: {
@@ -40,7 +32,6 @@ const Signup = () => {
                                 "Access-Control-Allow-Origin": "*",
                             },
                             body: JSON.stringify({
-                                Username: name,
                                 Useremail: email,
                                 password
                             }),
@@ -53,10 +44,6 @@ const Signup = () => {
                                     alert(data.message)
                                 }
                             })
-                    } else {
-                        Password.innerHTML = 'Passwords does not match each other'
-                    }
-                }
                 }
             }
         }
@@ -76,25 +63,21 @@ const Signup = () => {
                     <div className="overlap">
                         <div className="div">
                             <div className="center">
-                                <div className="text-wrapper-2">Hi, do you already have an accout?</div>
-                                <Link to={'/Signin'}>
-                                <button type="button" className="login-button">SIGN IN NOW<span class="signup-text"> SIGN IN NOW</span></button>
+                                <div className="text-wrapper-2">Hi, to create an account</div>
+                                <Link to={'/'}>
+                                <button type="button" className="login-button">SIGN UP NOW<span class="signup-text"> SIGN UP NOW</span></button>
                                 </Link>
                                 </div>
                         </div>
                         <div className="form">
                             <form id="form">
-                                <input type="text" placeholder="Full name" id="name" onChange={(e)=>{setname(e.target.value)}}/>
-                                <p id="error"></p>
                                 <input type="email" placeholder="Email" id="email" onChange={(e)=>{setemail(e.target.value)}}/>
                                 <p id="error1"></p>
                                 <input type="password" placeholder="Password" id="password" onChange={(e)=>{setpassword(e.target.value)}}/>
                                 <p id="error2"></p>
-                                <input type="password" placeholder="Confirm password" id="c-password" onChange={(e)=>{setcpassword(e.target.value)}}/>
-                                <p id="error2"></p>
-                                <input type="button" value={"SIGN UP"} id="btn" onClick={submit}/>
+                                <input type="button" value={"SIGN IN"} id="btn" onClick={submit}/>
                             </form>
-                            <p className="text-wrapper">Sign up with Google accounts:</p> <button type="button" id="icon" onClick={google}>Google</button>
+                            <p className="text-wrapper">Sign in with Google accounts:</p> <button type="button" id="icon" onClick={google}>Google</button>
                             </div>
                     </div>
                 </div>
@@ -104,4 +87,4 @@ const Signup = () => {
 }
 
 
-export default Signup
+export default Signin

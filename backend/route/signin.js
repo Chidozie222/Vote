@@ -20,9 +20,9 @@ signin.post('/login', async(req, res) => {
             res.send({status: 'error', message: 'Sorry your details do not exist, please sign up'})
         } else {
             if (User.password == password) {
-                res.send({status: 'ok', data: User})
+                res.send({status: 'ok', data: User, message: 'log in successful'})
             } else {
-                res.send({status: 'error', data: 'please check your email or password'})
+                res.send({status: 'error', message: 'please check your email or password'})
             }
         }
     } catch (error) {
