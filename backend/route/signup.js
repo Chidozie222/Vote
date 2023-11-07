@@ -24,7 +24,7 @@ try {
             password
         })
         let Newuser = await user.findOne({Useremail})
-        res.send({status: 'ok', data: Newuser, message: 'data upload successful'})
+        res.send({status: 'ok', data: Newuser.Useremail, message: 'data upload successful'})
     }
 } catch (error) {
     res.send({status: "error", message: "error with the server"})

@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema(
     Username: String,
     Useremail: String,
     googleId: String,
-    facebookId: String
+    facebookId: String,
+    Photo : String,
 },
 {
     collection: 'UserInput'

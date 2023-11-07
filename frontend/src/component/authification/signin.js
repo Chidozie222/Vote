@@ -1,12 +1,15 @@
 import React, {useState} from "react";
-import { Link, useNavigate } from "react-router-dom";
-import './signin.css';
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import '../styles/signin.css';
+
+
 
 
 const Signin = () => {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
-
+    const navigate = useNavigate()
     const submit = (e) => {
         e.preventDefault();
         let useremail = document.getElementById('error1')
@@ -19,6 +22,7 @@ const Signin = () => {
                 if (email.match("^([a-zA-Z0-9]+)@gmail.com")===null) {
                     useremail.innerText = 'This is how your email should be like example@gmail.com'
                 } else{
+                    sessionStorage.setItem('email', email)
                     if(password.trim().length === 0){
                         Password.innerText = 'Please input a password'
                     }else{
@@ -40,6 +44,9 @@ const Signin = () => {
                             .then(data => {
                                 if(data.status === 'ok'){
                                     alert(data.message)
+                                    window.sessionStorage.setItem('data', data.data)
+                                    console.log(data);
+                                    navigate("/home")
                                 } else{
                                     alert(data.message)
                                 }
@@ -55,6 +62,7 @@ const Signin = () => {
             "_self"
         )
     }
+
 
     return(
         <>
@@ -75,9 +83,13 @@ const Signin = () => {
                                 <p id="error1"></p>
                                 <input type="password" placeholder="Password" id="password" onChange={(e)=>{setpassword(e.target.value)}}/>
                                 <p id="error2"></p>
+                                <p id="text">Forgot your password?</p>
+                                <Link to={'/forget'} id="forget_password">
+                                    Click here
+                                </Link>
                                 <input type="button" value={"SIGN IN"} id="btn" onClick={submit}/>
                             </form>
-                            <p className="text-wrapper">Sign in with Google accounts:</p> <button type="button" id="icon" onClick={google}>Google</button>
+                            <p className="text-wrapper">Sign in with Google accounts:</p> <button type="button" id="icon" onClick={google}><i class="fa-brands fa-google"></i></button>
                             </div>
                     </div>
                 </div>

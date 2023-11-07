@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './Signup.css';
-
+import '../styles/Signup.css';
 
 const Signup = () => {
     const [name, setname] = useState("")
@@ -9,6 +8,7 @@ const Signup = () => {
     const [password, setpassword] = useState("")
     const [cpassword, setcpassword] = useState("")
 
+    let navigate = useNavigate()
     const submit = (e) => {
         e.preventDefault();
         let username = document.getElementById('error')
@@ -49,6 +49,8 @@ const Signup = () => {
                             .then(data => {
                                 if(data.status === 'ok'){
                                     alert(data.message)
+                                    window.sessionStorage.setItem('data1', data.data)
+                                    navigate("/home")
                                 } else{
                                     alert(data.message)
                                 }
@@ -92,9 +94,11 @@ const Signup = () => {
                                 <p id="error2"></p>
                                 <input type="password" placeholder="Confirm password" id="c-password" onChange={(e)=>{setcpassword(e.target.value)}}/>
                                 <p id="error2"></p>
-                                <input type="button" value={"SIGN UP"} id="btn" onClick={submit}/>
+                                <input type="button" value={"SIGN UP"} id="btn1" onClick={submit}/>
                             </form>
-                            <p className="text-wrapper">Sign up with Google accounts:</p> <button type="button" id="icon" onClick={google}>Google</button>
+                            <p className="text-wrapper">Sign up with Google accounts:</p> <button type="button" id="icon" onClick={google}>
+                                <img src={process.env.PUBLIC_URL + './google.png'}/>
+                            </button>
                             </div>
                     </div>
                 </div>

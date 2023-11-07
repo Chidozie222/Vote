@@ -20,13 +20,15 @@ auth.get('/auth/google/callback', passport.authenticate('google', {failureRedire
     const Username = req.user.displayName
     const Useremail = req.user.emails[0].value
     const googleId = req.user.id
+    const Photo = req.user.photos[0].value
     try {
             await User.findOrCreate({
                 Username,
                 Useremail,
-                googleId
+                googleId,
+                Photo
         })
-        res.send({status: 'ok', message: 'data uploaded successfully'})
+        res.send({status: 'ok', message: 'data uploaded successfully', data: Useremail})
     } catch (error) {
         res.send({status: 'error', message: 'error in the server'})
         console.log(error);

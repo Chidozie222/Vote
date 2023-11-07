@@ -1,0 +1,53 @@
+.title{
+    position: relative;
+    right: 0;
+    margin-left: 320px;
+    width: 74.5%;
+    float: right;
+    display: flex;
+    align-items: center;
+}
+.content{
+    position: relative;
+    top: 200px;
+    margin: 0 0 0 50px;
+}
+#label{
+    color: #000;
+    font-family: Rubik;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+#title_holder{
+    width: 800px;
+    margin-left: 30px;
+    height: 50px;
+}
+#title_next_btn{
+    float: right;
+}
+#title_back_btn{
+    display: inline;
+    margin: 0;
+}
+#link{
+    display: inline;
+    margin: 0;
+}
+.title_button{
+    margin: 25px 0 0 0;
+    padding: 0 15px 0 15px;
+}
+.title_btn{
+    width: 100px;
+    text-align: center;
+    background-color: #e69d1b;
+    color: #fff;
+    font-size: larger;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    height: 50px;
+}

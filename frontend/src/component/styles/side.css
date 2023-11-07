@@ -1,0 +1,45 @@
+.div{
+    width: 350px;
+    background-color: #e69d1b;
+    text-align: left;
+    color: #fff;
+    font-size: larger;
+    cursor: pointer;
+    padding: 0;
+    position: fixed;
+    left: 0;
+    margin: 0 0 0 0;
+    height: auto;
+    padding: 50px 0 100px 0;
+}
+a{
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-size: larger;
+    margin: 50px 0 50px 40px;
+    cursor: pointer;
+}
+a.active {
+    background-color: #fff; 
+    color: #e69d1b; 
+    padding: 14px 0 14px 40px;
+    width: 100%;
+    margin: 14px 0 0 0;
+  }
+#img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: inline;
+}
+.profile{
+    display: flex;
+}
+#Admin{
+    margin: 0 0 0 70px;
+    font-size: small;
+}
+#user_name{
+    margin: 20px 12px 0 40px;
+}

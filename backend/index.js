@@ -11,6 +11,8 @@ const result = require('./route/result')
 const otp = require('./route/otp')
 const auth = require('./route/auth')
 const fb = require('./route/facebook')
+const fogetpassword = require('./route/forgetpassword')
+const Title = require('./route/title')
 const app = express();
 app.use(express.json())
 app.use(cors())
@@ -24,6 +26,8 @@ app.use(result)
 app.use(otp)
 app.use(auth)
 app.use(fb)
+app.use(fogetpassword)
+app.use(Title)
 require('dotenv').config()
 let mongo = process.env.mongoUrl
 mongoose.connect(mongo, {

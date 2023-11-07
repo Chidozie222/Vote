@@ -1,0 +1,43 @@
+#search{
+    width: 301px;
+    height: 31px;
+    border-radius: 21px;
+    border: 1px solid rgba(0, 0, 0, 0.60);
+    margin: 80px 52px 0 0;
+    float: right;
+    display: block;
+}
+.home{
+    position: relative;
+    right: 0;
+    margin-left: 320px;
+    width: 74.5%;
+    float: right;
+}
+.home_body{
+    position: relative;
+    top: 100px;
+}
+.Add_new{
+    width: 900px;
+    height: 100px;
+    background: #FFF;
+    color: black;
+    display: flex;
+    align-items: center;
+    border: 0.5px solid black;
+}
+.Add_new:hover{
+    box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.25);
+}
+#Add{
+    float: right;
+    position: absolute;
+    right: 150px;
+    font-size: 60px;
+}
+#poll{
+    float: left;
+    font-size: 30px;
+    margin: 0 0 0 40px;
+}

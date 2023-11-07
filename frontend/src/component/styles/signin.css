@@ -26,7 +26,7 @@
   
   .sign-in .div {
     background-color: #e69d1b;
-    height: 689px;
+    height: 590px;
     left: 0;
     position: absolute;
     top: 0;
@@ -126,12 +126,13 @@
     width: 200px;
     text-align: center;
     padding: 0;
-    left: 180px;
+    left: 150px;
     position: relative;
     background-color: #e69d1b;
     color: #fff;
     font-size: larger;
     cursor: pointer;
+    margin: 100px 0 0 0;
   }
   #btn:hover{
     transform: scale(0.5, 0.5);
@@ -163,10 +164,6 @@
     border: none;
     cursor: pointer;
   }
-  #error{
-    color: red;
-    margin: 0 0 0 20px;
-  }
   #error1{
     color: red;
     margin: 0 0 0 20px;
@@ -175,4 +172,31 @@
     color: red;
     margin: 0 0 0 20px;
   }
-/*second section*/
+  #text{
+    color: #000000;
+    font-family: "Rubik-Regular", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    top: 40px;
+    right: 79px;
+  }
+  #forgot{
+    position: absolute;
+    right: 260px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: blue;
+  }
+#forget_password{
+  position: absolute;
+  right: 270px;
+  bottom: 235px;
+  color: blue;
+}

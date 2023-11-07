@@ -7,39 +7,37 @@ const {storeHashedOTP, retrieveHashedOTPFromDatabase, deleteHashedOTP} = require
 const fp = Router()
 
 require('../index');
-require('../models/voterprofile');
+require('../models/userauth');
 
-let Otp = mongoose.model('csv');
+let Otp = mongoose.model('user');
 
 
 
 fp.post('/fogetpassword', async (req, res) => {
-    const { email } = req.body;
+    const { Useremail } = req.body;
+    let email = Useremail
     try {
         const otp = await sendOTP(email);
         const OTP = await hashOTP(otp);
         await storeHashedOTP(email, OTP);
-        res.status(200).json({ message: 'OTP sent and hashed successfully' });
+        res.status(200).json({ status: 'ok', message: 'OTP sent and hashed successfully' });
     } catch (error) {
-        res.status(500).json({ message: 'Error sending and hashing OTP', error });
-        throw error
+        res.status(500).json({ status: 'error', message: 'Error sending and hashing OTP'});
     }
 });
 
 fp.post('/verifypassword', async (req, res) => {
-    const {Useremail, Newpassword} = req.body
+    const {Useremail, password, otp} = req.body
     let email = Useremail
     try {
         const OTP = await retrieveHashedOTPFromDatabase(email);
         const isValid = await verifyOTP(OTP);
-        const code = PhoneNumber;
-        console.log(code);
         if (isValid == otp) {
             const Email = await Otp.findOne({Useremail: email})
             if (Email) {
                 await Otp.updateOne(
                     {Useremail: email},
-                    {$set: {password: Newpassword}}
+                    {$set: {password: password}}
                 )
                 res.send({status: 'ok', message: 'Password Updated'})
             } else {

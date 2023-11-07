@@ -5,7 +5,7 @@ const candidateinformation = new mongoose.Schema(
     {
         candidateName: {type: String, require: true},
         position: {type: String, require: true},
-        affilation: String,
+        Affiliate: String,
         image: {type: String, require: true},
         Title: {type: String, require: true},
         Useremail: {type: String, require: true}
