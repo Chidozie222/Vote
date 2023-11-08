@@ -7,6 +7,9 @@ import Verify from './authification/verify';
 import Forget from './authification/forget';
 import Home from './home/home';
 import Title from './candidate_information/title';
+import Position from './position/position';
+import Position_form from './candidate_information/position';
+import Candidate_information from './candidate_information/candidate';
 
 const Routing = () => {
     return(
@@ -21,6 +24,9 @@ const Routing = () => {
                         <Route path='/home' element= {<Home/>}/>
                         <Route path='/forget' element= {<Forget/>}/>
                         <Route path='/Add_new' element= {<Title/>}/>
+                        <Route path='/position/:Useremail/:Title' element= {<Position/>}/>
+                        <Route path='/Add_new_position' element= {<Position_form/>}/>
+                        <Route path='/candidate/:Useremail/:Title/:position' element= {<Candidate_information/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

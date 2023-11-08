@@ -3,12 +3,12 @@ const mongoose = require('mongoose')
 
 const candidateinformation = new mongoose.Schema(
     {
-        candidateName: {type: String, require: true},
-        position: {type: String, require: true},
+        candidateName: {type: String, required: true},
+        position: {type: String, required: true},
         Affiliate: String,
-        image: {type: String, require: true},
-        Title: {type: String, require: true},
-        Useremail: {type: String, require: true}
+        image: {type: String, required: true},
+        Title: {type: String, required: true},
+        Useremail: {type: String, required: true}
     },
     {
         collection: "candidateInformation"

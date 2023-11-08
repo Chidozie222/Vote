@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 
 const Home = () => {
-    const [Title, setTitle] = useState("")
+    const [Title2, setTitle2] = useState([])
     let Useremail = window.sessionStorage.getItem('email')
     console.log(Useremail);
     useEffect(()=>{
@@ -13,24 +13,12 @@ const Home = () => {
     axios.get(`http://localhost:2000/title/${Useremail}`)
     .then((res) => {
         console.log("Request successful");
-        setTitle(res.data);
+        setTitle2(res.data);
     })
     .catch((error) => {
         console.error("Error in request:", error);
     });
     }, [Useremail])
-
-    const title = (data) => {
-        if (data.data) {
-                    return(
-                        <Link to={'/Add_new'}>
-                        <div className="Add_new">
-                            <p id="poll">{data.data[0].Title}</p>
-                        </div>
-                    </Link>
-                    )
-            }
-    }
     return(
         <>
             <Side/>
@@ -43,7 +31,19 @@ const Home = () => {
                             <p id="Add">+</p>
                         </div>
                     </Link>
-                    {title(Title)}
+                    {Array.isArray(Title2.data) && Title2.data.length > 0 ? (
+                        Title2.data.map((title) => (
+                            <Link to={`/position/${title.Useremail}/${title.Title}`} key={title._id}>
+                                <div className="Add_new">
+                                    <p id="poll">{title.Title}</p>
+                                </div>
+                            </Link>
+                        ))
+                    ) : (
+                        <h1>Add New Title</h1>
+                    )}
+
+                    
                 </div>
             </div>
         </>

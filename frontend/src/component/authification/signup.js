@@ -76,7 +76,7 @@ const Signup = () => {
             <div className="sign-in">
                 <div className="overlap-wrapper">
                     <div className="overlap">
-                        <div className="div">
+                        <div className="div1">
                             <div className="center">
                                 <div className="text-wrapper-2">Hi, do you already have an accout?</div>
                                 <Link to={'/Signin'}>
@@ -97,7 +97,7 @@ const Signup = () => {
                                 <input type="button" value={"SIGN UP"} id="btn1" onClick={submit}/>
                             </form>
                             <p className="text-wrapper">Sign up with Google accounts:</p> <button type="button" id="icon" onClick={google}>
-                                <img src={process.env.PUBLIC_URL + './google.png'}/>
+                                <img src={process.env.PUBLIC_URL + 'google.png'}/>
                             </button>
                             </div>
                     </div>

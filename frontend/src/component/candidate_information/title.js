@@ -30,7 +30,7 @@ const Title = () => {
                 .then(data=> {
                     if (data.status === 'ok') {
                         alert(data.message)
-                        navigate("/position")
+                        navigate(`/position/${Useremail}/${title}`)
                     } else {
                         alert(data.message)
                     }
@@ -43,7 +43,7 @@ const Title = () => {
         <Side/>
             <div className="title">
                 <div className="content">
-                    <h1 id="label">Election Title:</h1>
+                    <p id="label">Election Title:</p>
                     <input type="text" id="title_holder" onChange={(e)=>{settitle(e.target.value)}}/>
                     <p id="error"></p>
                     <div className="title_button">

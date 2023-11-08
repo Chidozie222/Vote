@@ -45,7 +45,6 @@ const Signin = () => {
                                 if(data.status === 'ok'){
                                     alert(data.message)
                                     window.sessionStorage.setItem('data', data.data)
-                                    console.log(data);
                                     navigate("/home")
                                 } else{
                                     alert(data.message)
