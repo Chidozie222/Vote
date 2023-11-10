@@ -12,15 +12,18 @@ let candidate = mongoose.model('candidate');
 let posi = mongoose.model('Position')
 
 const storage = multer.diskStorage({
-    destination: 'public/uploads/', // Store uploaded files in the 'public/uploads' directory
-    filename: (req, file, callback) => {
-        callback(null, Date.now() + '-' + file.originalname);
-    },
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads')
+    }, 
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
 });
 
 const upload = multer({ storage: storage });
 
-candidateInfo.use('/public/uploads', express.static(path.join(__dirname, 'public')));
+candidateInfo.use(express.static('public'))
+ 
 candidateInfo.post('/cadidateInformation', upload.single('image'), async(req, res) => {
     const {candidateName, position, Affiliate, Title, Useremail} = req.body
 
@@ -30,16 +33,21 @@ candidateInfo.post('/cadidateInformation', upload.single('image'), async(req, re
     
     const imagePath = req.file.filename;  // Corrected this line
     try {
+        let newold = await candidate.find({candidateName})
+        if(newold){
+            res.send({status: 'error', message: 'candidate alrady exist'})
+        } else{
         await candidate.create({
             candidateName,
             position,
             Affiliate,
             Title,
             Useremail,
-            image: imagePath.trim(),
+            image: imagePath,
         })
 
         res.send({status: 'ok', message: 'data inputed successfully'})
+    }
     } catch (error) {
         res.send({status: 'error', message: 'error send the data to the server. please try again later'})
         console.log(error);
@@ -67,7 +75,11 @@ candidateInfo.get('/getcandidateinfo/:Useremail/:Title/:position', async(req, re
             let title = await candidate.find({Title})
             if (title) {
                 let pos = await candidate.find({position})
-                res.send({status: 'ok', data: pos})
+                if (pos[0].candidateName) {
+                    res.send({status: 'ok', data: pos})
+                } else {
+                    res.send({status: 'error', data: 'none'})
+                }
             }
         }
     } catch (error) {

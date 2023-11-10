@@ -18,6 +18,18 @@ const Position = () => {
             setposition(res.data)
         })
     })
+    const pos = (data) => {
+        console.log(data.data);
+        if (data.data) {
+            return(
+                <>
+                <Link to={'/voter-id'}>
+                    <button type="button" id="pos-btn">Submit</button>
+                </Link>
+                </>
+            )
+        }
+    }
     return(
         <>
         <Side/>
@@ -41,6 +53,7 @@ const Position = () => {
                     ) : (
                        <h1 id="world">Add New Title</h1> 
                     )}
+                    {pos(position)}
                 </div>
             </div>
         </>

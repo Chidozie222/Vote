@@ -50,3 +50,14 @@ h1{
 #position_title{
     margin-left: 200px;
 }
+#pos-btn{
+    float: right;
+    margin: 10px 23px 10px 0;
+    background-color: #e69d1b;
+    color: #fff;
+    font-size: larger;
+    cursor: pointer;
+    padding: 8px 23px 8px 23px;
+    border-radius: 45px;
+    border: none;
+}

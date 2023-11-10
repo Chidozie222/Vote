@@ -45,6 +45,28 @@ const Candidate_information = () => {
             }
         })
     }
+
+    const button = (data) => {
+        console.log(data);
+        if (data.status === 'ok') {
+            return(<>
+                <button class="btn" data-toggle="modal" data-target="#devModal">Add candidate</button>
+                <div className="btn-right">
+                <Link to={'/Add_new_position'} id="btn_link">
+                <button class="btn" id="can-btn">Add A new Position</button>
+                </Link>
+                <Link to={`/position/${Useremail}/${Title}`} id="btn_link">
+                <button class="btn" id="can-btn">Finish</button>
+                </Link>
+                </div>
+                </>
+            )
+        } else{
+            return(
+                <></>
+            )
+        }
+    }
     return(
         <>
         <Side/>
@@ -55,10 +77,12 @@ const Candidate_information = () => {
                         candidate.data.map((title) => (
                             <>
                             <div className="candidate_profile">
-                            <img src={`http://localhost:2000/public/uploads/${title.image}`} alt={title.candidateName}/>
-                                {console.log(title)}
+                            <img src={`http://localhost:2000/uploads/${title.image}`} alt={title.candidateName} id="candidate_img"/>
+                            <div className="right">
+                                <p className="label-candidate">{title.candidateName}</p>
+                                <p className="label-candidate">{title.position}</p>
                             </div>
-                            <button class="btn" data-toggle="modal" data-target="#devModal">Add candidate</button>
+                            </div>
                             </>
                         ))
                     ) : (
@@ -67,6 +91,7 @@ const Candidate_information = () => {
                         <button class="btn" data-toggle="modal" data-target="#devModal">Add candidate</button> 
                         </>
                     )}
+                    {button(candidate)}
             </div>
 
 <div id="devModal" class="modal fade" role="dialog">

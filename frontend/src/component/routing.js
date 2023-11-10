@@ -10,6 +10,7 @@ import Title from './candidate_information/title';
 import Position from './position/position';
 import Position_form from './candidate_information/position';
 import Candidate_information from './candidate_information/candidate';
+import Voter from './voter-id/voter-id.jsx';
 
 const Routing = () => {
     return(
@@ -27,6 +28,7 @@ const Routing = () => {
                         <Route path='/position/:Useremail/:Title' element= {<Position/>}/>
                         <Route path='/Add_new_position' element= {<Position_form/>}/>
                         <Route path='/candidate/:Useremail/:Title/:position' element= {<Candidate_information/>}/>
+                        <Route path='/voter-id' element= {<Voter/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

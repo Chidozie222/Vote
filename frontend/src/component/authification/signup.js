@@ -50,7 +50,7 @@ const Signup = () => {
                                 if(data.status === 'ok'){
                                     alert(data.message)
                                     window.sessionStorage.setItem('data1', data.data)
-                                    navigate("/home")
+                                    navigate("/Signin")
                                 } else{
                                     alert(data.message)
                                 }

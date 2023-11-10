@@ -55,11 +55,11 @@ const Signin = () => {
         }
     }
 
-    const google = () => {
-        window.open(
-            'http://localhost:2000/google',
-            "_self"
-        )
+    const google = async() => {
+        const response = await fetch('http://localhost:2000/google',
+        {method: 'post'});
+        const data = await response.json();
+        window.location.assign(data.url);
     }
 
 

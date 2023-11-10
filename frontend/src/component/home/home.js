@@ -7,7 +7,16 @@ import axios from "axios"
 const Home = () => {
     const [Title2, setTitle2] = useState([])
     let Useremail = window.sessionStorage.getItem('email')
-    console.log(Useremail);
+    useEffect(() => {
+        axios.get('http://localhost:2000/auth/google/callback')
+    .then((res) => {
+       console.log(res.data);
+    })
+    .catch((error) => {
+        console.error('Error in Google authentication callback:', error);
+    });
+      }, []);
+
     useEffect(()=>{
         console.log("useEffect started");
     axios.get(`http://localhost:2000/title/${Useremail}`)

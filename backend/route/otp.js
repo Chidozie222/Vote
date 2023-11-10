@@ -27,7 +27,7 @@ otp.post('/sendotp', async (req, res) => {
 });
 
 otp.post('/verifyotp', async (req, res) => {
-    const { email, otp, PhoneNumber, Name, Title, Useremail } = req.body;
+    const { email, otp, PhoneNumber, Name, Useremail } = req.body;
     
     try {
         const OTP = await retrieveHashedOTPFromDatabase(email);
@@ -43,7 +43,6 @@ otp.post('/verifyotp', async (req, res) => {
                     Name,
                     code,
                     email,
-                    Title,
                     Useremail
                 });
                 await deleteHashedOTP(email);

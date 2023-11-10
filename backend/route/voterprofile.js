@@ -21,7 +21,6 @@ const upload = multer({ storage: storage });
 
 voterprofile.post('/csvfile', upload.single('csvfile'), async (req, res) => {
     const csvfile = req.file;
-    const {Title, Useremail} = req.body
     try {
         if (csvfile) {
             const csvFilePath = csvfile.path;
@@ -35,13 +34,12 @@ voterprofile.post('/csvfile', upload.single('csvfile'), async (req, res) => {
                             Name: entry.Name,
                             code: entry.code,
                             email: entry.email,
-                            Title,
-                            Useremail
+                            Useremail: entry.Useremail
                         });
                         await csvData.save();
                     }
 
-                    res.status(200).json({ message: 'Data saved to MongoDB' });
+                    res.status(200).json({ status: 'ok', message: 'Data saved' });
                 });
         } else {
             res.status(400).json({ error: 'No file uploaded' });
@@ -53,16 +51,13 @@ voterprofile.post('/csvfile', upload.single('csvfile'), async (req, res) => {
 });
 
 voterprofile.post('/csvusers', async(req, res) => {
-    const{Useremail, Title} = req.body
+    const{Useremail} = req.body
     try{
     let email = await csvmodel.findOne({Useremail})
     if(email){
-        let title = await csvmodel.findOne({Title})
-        if (title) {
-            res.send({status: "ok", data: title})
-        } else {
+            res.send({status: "ok", data: email})
+    } else{
             res.send({status: 'error', data: "error geting user is"})
-        }
     }
 } catch(Error){
     res.status(400).send({status: "error", data: "error in the server"})
