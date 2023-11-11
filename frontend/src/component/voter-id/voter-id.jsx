@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/voter-id.css';
 import Side from '../side/side';
-
+import { Link } from 'react-router-dom';
 
 const Voter = () => {
-    const [voter, setvoter] = useState("")
-    let Useremail = window.sessionStorage.getItem('email')
+let Useremail = window.sessionStorage.getItem('email')
 
-    const voter_csv = () => {
-        let csvfile = document.querySelector("input[type=file]").files[0];
+    const voter_id = () => {
+              document.getElementById('link_message').innerText = `This is your link: http://localhost:3000/voterprofile/${Useremail}`;
+    }
 
-        const csv = new FormData
+    const csv_package = () => {
+        let csvfile = document.getElementById('voter_img').files[0];
+        if (csvfile.name) {
+            const csv = new FormData
         csv.append('csvfile', csvfile)
 
         
@@ -26,14 +29,15 @@ const Voter = () => {
                 alert(data.message)
             }
         })
+        }
     }
 
-    const voter_id = () => {
-        return(
-            <>
-                <p id='register_link'>This is your link: http://localhost:3000/voterprofile/{Useremail}</p>
-            </>
-        )
+    const csvfolder = document.getElementById('add_icon')
+    if (csvfolder) {
+        csvfolder.addEventListener('click', () => {
+            document.getElementById('voter_img').click();
+            csv_package()
+        })
     }
 
     return(
@@ -54,13 +58,18 @@ const Voter = () => {
                     <div className="voterid_image">
                         <label htmlFor="Csv" className="voter_img">
                             <p id="add_icon">+</p>
-                            <input type="file" name="Csv" id="voter_img"/>
+                            <input type="file" name="Csv" id="voter_img" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
                         </label>
                         <p id="voter_imgtext">Upload us csv file here</p>
                     </div>
                 </div>
 
-                <div className="voter-generate_link"></div>
+                <div className="voter-generate_link">
+                    <h3 id="voter_sub-header">Allow any body that has registered to vote with the generated link to vote</h3>
+                    <button id="generate_link" onClick={voter_id}>Generate Link</button>
+                </div>
+                <center><p id="link_message"></p></center>
+                <center><Link to={'preview_page'}><button id="preview">Preview All the Voter</button></Link></center>
           </div>  
         </>
     )
