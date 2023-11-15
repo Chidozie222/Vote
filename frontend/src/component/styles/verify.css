@@ -63,3 +63,10 @@ background-color: #ffffff;
     color: red;
     margin: 0 0 0 20px;
 }
+#resend_button{
+    padding: 7px 20px 7px 20px;
+    border-radius: 50px;
+    color: #fff;
+    background-color: #e69d1b;
+    border: none;
+}

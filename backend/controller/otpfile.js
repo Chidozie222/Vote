@@ -5,9 +5,7 @@ const OTPModel = require('../models/otp');
 async function storeHashedOTP(email, OTP) {
     try {
         const otpRecord = await OTPModel.findOne({ email });
-        if (otpRecord) {
-            return alert('please use the otp sent to you')
-        } else {
+        if (otpRecord) {} else {
             await OTPModel.create({ email, OTP });
         }
     } catch (error) {

@@ -18,12 +18,17 @@ const Position = () => {
             setposition(res.data)
         })
     })
+    const font = () => {
+        let request = document.getElementById('link_message')
+        request.innerText = `http://localhost:3000/voter_platform/${Title}/${Useremail}`
+    }
     const pos = (data) => {
-        console.log(data.data);
         if (data.data) {
             return(
                 <>
-                <Link to={'/voter-id'}>
+                <center><p id="link_message"></p></center>
+                <button className="flash" onClick={font}>Generate Voter platform Link</button>
+                <Link to={'/voter-id'} id="link_of-link">
                     <button type="button" id="pos-btn">Submit</button>
                 </Link>
                 </>

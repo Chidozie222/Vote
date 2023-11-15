@@ -26,7 +26,7 @@ signin.post('/login', async(req, res) => {
             }
         }
     } catch (error) {
-        res.send({status: 'ok', message: 'Sorry, error in the server, please reload the page'})
+        res.send({status: 'error', message: 'Sorry, error in the server, please reload the page'})
     }
 })
 

@@ -33,8 +33,10 @@ candidateInfo.post('/cadidateInformation', upload.single('image'), async(req, re
     
     const imagePath = req.file.filename;  // Corrected this line
     try {
-        let newold = await candidate.find({candidateName})
-        if(newold){
+        let user = await candidate.find({position})
+        if (user) {
+            let newold = await candidate.find({candidateName})
+        if(newold.length>0){
             res.send({status: 'error', message: 'candidate alrady exist'})
         } else{
         await candidate.create({
@@ -45,12 +47,11 @@ candidateInfo.post('/cadidateInformation', upload.single('image'), async(req, re
             Useremail,
             image: imagePath,
         })
-
         res.send({status: 'ok', message: 'data inputed successfully'})
+        } 
     }
     } catch (error) {
         res.send({status: 'error', message: 'error send the data to the server. please try again later'})
-        console.log(error);
     }
 })
 
@@ -108,7 +109,6 @@ candidateInfo.post('/position_title', async(req, res)=> {
             let title = await posi.find({Title})
             if (title) {
                 let pos = await posi.find({position})
-                console.log(pos);
                 if (pos.Useremail) {
                     res.send({status: 'error', message: 'position already exists'})
                 } else {

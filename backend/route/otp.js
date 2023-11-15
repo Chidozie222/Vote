@@ -19,7 +19,7 @@ otp.post('/sendotp', async (req, res) => {
         const otp = await sendOTP(email);
         const OTP = await hashOTP(otp);
         await storeHashedOTP(email, OTP);
-        res.status(200).json({ message: 'OTP sent and hashed successfully' });
+        res.status(200).json({status: 'ok', message: 'OTP sent and hashed successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error sending and hashing OTP', error });
         throw error
@@ -33,8 +33,7 @@ otp.post('/verifyotp', async (req, res) => {
         const OTP = await retrieveHashedOTPFromDatabase(email);
         const isValid = await verifyOTP(OTP);
         const code = PhoneNumber;
-        console.log(code);
-        if (isValid == otp) {
+        if (isValid === otp) {
             const Email = await Otp.findOne({email})
             if (Email) {
                 res.status(501).json({message: "this user already exist"})
@@ -46,7 +45,7 @@ otp.post('/verifyotp', async (req, res) => {
                     Useremail
                 });
                 await deleteHashedOTP(email);
-                res.status(200).json({ message: 'OTP verified successfully' });
+                res.status(200).json({status: 'ok',  message: 'OTP verified successfully' });
             }
         } else {
             res.status(400).json({ message: 'Invalid OTP' });

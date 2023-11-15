@@ -64,12 +64,6 @@ const Signup = () => {
         }
     }
 
-    const google = () => {
-        window.open(
-            'http://localhost:2000/google',
-            "_self"
-        )
-    }
 
     return(
         <>
@@ -96,9 +90,6 @@ const Signup = () => {
                                 <p id="error2"></p>
                                 <input type="button" value={"SIGN UP"} id="btn1" onClick={submit}/>
                             </form>
-                            <p className="text-wrapper">Sign up with Google accounts:</p> <button type="button" id="icon" onClick={google}>
-                                <img src={process.env.PUBLIC_URL + 'google.png'}/>
-                            </button>
                             </div>
                     </div>
                 </div>

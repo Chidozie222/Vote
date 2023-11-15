@@ -7,7 +7,7 @@ const Voter = () => {
 let Useremail = window.sessionStorage.getItem('email')
 
     const voter_id = () => {
-              document.getElementById('link_message').innerText = `This is your link: http://localhost:3000/voterprofile/${Useremail}`;
+              document.getElementById('link_message').innerText = `This is your link: http://localhost:3000/sent/${Useremail}`;
     }
 
     const csv_package = () => {
@@ -69,7 +69,7 @@ let Useremail = window.sessionStorage.getItem('email')
                     <button id="generate_link" onClick={voter_id}>Generate Link</button>
                 </div>
                 <center><p id="link_message"></p></center>
-                <center><Link to={'preview_page'}><button id="preview">Preview All the Voter</button></Link></center>
+                <center><Link to={`preview_page/${Useremail}`}><button id="preview">Preview All the Voter</button></Link></center>
           </div>  
         </>
     )

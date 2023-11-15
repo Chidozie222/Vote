@@ -22,7 +22,6 @@ const Candidate_information = () => {
     })
     const candidate_function = () => {
         let image = document.querySelector("input[type=file]").files[0];
-        console.log(image);
 
         const candidate_file_info = new FormData()
         candidate_file_info.append('candidateName', candidateName)
@@ -47,7 +46,6 @@ const Candidate_information = () => {
     }
 
     const button = (data) => {
-        console.log(data);
         if (data.status === 'ok') {
             return(<>
                 <button class="btn" data-toggle="modal" data-target="#devModal">Add candidate</button>

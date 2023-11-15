@@ -50,18 +50,41 @@ voterprofile.post('/csvfile', upload.single('csvfile'), async (req, res) => {
     }
 });
 
-voterprofile.post('/csvusers', async(req, res) => {
-    const{Useremail} = req.body
+voterprofile.get('/csvusers/:Useremail', async(req, res) => {
+    const{Useremail} = req.params
     try{
-    let email = await csvmodel.findOne({Useremail})
+    let email = await csvmodel.find({Useremail})
     if(email){
             res.send({status: "ok", data: email})
     } else{
-            res.send({status: 'error', data: "error geting user is"})
+            res.send({status: 'error'})
     }
 } catch(Error){
     res.status(400).send({status: "error", data: "error in the server"})
 }
+})
+
+voterprofile.post('/voter_platform-login', async(req, res) => {
+    const {email, code, Useremail} = req.body
+    try{
+        let useremail = await csvmodel.find({Useremail})
+        if (useremail) {
+            let Email = await csvmodel.findOne({email})
+            if (Email) {
+                if (code === Email.code) {
+                    res.send({status: 'ok', message: 'User Vaild', data: Email})
+                } else {
+                    res.send({status: 'error', message: 'user not vaild'})
+                }
+            } else {
+                res.send({status: 'error', message: 'user not vaild'})
+            }
+        } else {
+            res.send({status: 'error', message: 'user not vaild'})
+        }
+    } catch(Error){
+        res.status(400).send({status: "error", data: "error in the server"})
+    }
 })
 
 module.exports = voterprofile;
