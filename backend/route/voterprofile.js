@@ -45,7 +45,6 @@ voterprofile.post('/csvfile', upload.single('csvfile'), async (req, res) => {
             res.status(400).json({ error: 'No file uploaded' });
         }
     } catch (error) {
-        console.error('Error:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });

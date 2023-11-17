@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/verify.css'
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
+require('dotenv').config();
 
 
 
@@ -33,7 +34,7 @@ const Guest_verify = () => {
                         if (PhoneNumber.trim().length === 0) {
                             Password.innerText = "Please input your Phone Number"
                         } else {
-                                fetch("http://localhost:2000/verifyotp", {
+                                fetch(`${process.env.REACT_APP_URL}/verifyotp`, {
                             method: "POST",
                             crossDomain: true,
                             headers: {
@@ -71,7 +72,7 @@ const Guest_verify = () => {
         if (mail==="") {
             useremail.innerText= 'please input your email'
         } else {
-            fetch('http://localhost:2000/sendotp', {
+            fetch(`${process.env.REACT_APP_URL}/sendotp`, {
                 method: "POST",
                 crossDomain: true,
                 headers: {

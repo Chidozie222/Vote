@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import '../styles/voter_platform.css'
+require('dotenv').config();
 
 const Voter_platform_vote = () => {
     let params = useParams()
@@ -12,36 +14,38 @@ const Voter_platform_vote = () => {
     const [candidate, setcandidate] = useState([])
     const [page, setPage] = useState(1)
     const [result, setresult] = useState("")
-
+    let navigate = useNavigate()
     useEffect(()=>{
-        axios.get(`http://localhost:2000/position_title/${Useremail}/${Title}`)
+        axios.get(`${process.env.REACT_APP_URL}/position_title/${Useremail}/${Title}`)
         .then((res)=> {
             setPosition(res.data.data) // replace yourArray with the correct key
         })
-    },[])
+    },[Useremail, Title])
 
     useEffect(()=>{
-        axios.get(`http://localhost:2000/user_info/${_id}`)
+        axios.get(`${process.env.REACT_APP_URL}/user_info/${_id}`)
         .then((res)=> {
             setUser_file(res.data)
         })
-    },[])
+    },[_id])
     const catch_illegal_voter = async() => {
-        let email = await User_file.data.email
-        axios.get(`http://localhost:2000/remove/${Useremail}/${Title}/${email}`)
+        if (User_file.status === 'ok') {
+            let email = User_file.data.email;
+        axios.get(`${process.env.REACT_APP_URL}/remove/${Useremail}/${Title}/${email}`)
         .then((res)=> {
             let illegal_activities = res.data
 
             if (illegal_activities.status === 'ok') {
                 alert(illegal_activities.message)
+                navigate('/finish')
             } else {
                 if (illegal_activities.status === 'pending') {
-                    alert(illegal_activities.message)
                 } else {
                     alert(illegal_activities.message)
                 }
             }
         })
+        }
     }
 
     useEffect(()=> {
@@ -50,10 +54,14 @@ const Voter_platform_vote = () => {
 
     useEffect(()=>{
         Position.forEach(position => {
-            axios.get(`http://localhost:2000/getcandidateinfo/${Useremail}/${Title}/${position.position}`)
-            .then((res)=> {
-                setcandidate(oldArray=>([...oldArray, ...res.data.data])) // replace yourArray with the correct key
-            })
+            if (position.position) {
+                axios.get(`${process.env.REACT_APP_URL}/getcandidateinfo/${Useremail}/${Title}/${position.position}`)
+                .then((res)=> {
+                    if (res.data.status === 'ok') {
+                        setcandidate(oldArray=>([...oldArray, ...res.data.data])) // replace yourArray with the correct key
+                    }
+                })
+            }
         })
     },[Position])
 
@@ -79,9 +87,8 @@ const button = () => {
 
 // ...
 const voting_result = async(_id) => {
-    console.log(_id);
     if (_id) {
-        axios.get(`http://localhost:2000/candidate_id/${_id}`)
+        axios.get(`${process.env.REACT_APP_URL}/candidate_id/${_id}`)
         .then((res)=> {
             setresult(res.data)
         })
@@ -93,7 +100,9 @@ const voting_result = async(_id) => {
             let Useremail = await result.data.Useremail
             let Name = await User_file.data.Name
             let email = await User_file.data.email
-            fetch("http://localhost:2000/voter_for_candidate", {
+            let image = await result.data.image
+            console.log(image);
+            fetch(`${process.env.REACT_APP_URL}/voter_for_candidate`, {
                 method: "POST",
                 crossDomain: true,
                 headers: {
@@ -105,6 +114,7 @@ const voting_result = async(_id) => {
                     candidateName,
                     position,
                     Name,
+                    image,
                     email,
                     Title,
                     Useremail
@@ -129,13 +139,16 @@ const project_impossible_part2 = () => {
         return (
             <>
                 {candidate.slice((page - 1) * 3, page * 3).map((title) => (
-                    <>
-                    <p id="position" key={title._id}>
-                        {title.candidateName}
-                    </p>
-                    <button type="button" onClick={() => voting_result(title._id)}>Vote</button>
-                    </>
+                    <React.Fragment key={title._id}>
+                        <div className="voter_real_info">
+                        <img src={`${process.env.REACT_APP_URL}/uploads/${title.image}`} alt={title.candidateName} id="candidate_img-for_voting"/>
+                        <p id="position">{title.candidateName}</p>
+                        <p className="voter-candidate">{title.position}</p>
+                        <button type="button" onClick={() => voting_result(title._id)} id="voter_btn">Vote</button>
+                        </div>
+                    </React.Fragment>
                 ))}
+
             </>
         );
     }
@@ -145,7 +158,7 @@ const auth = async() => {
     let Name = await User_file.data.Name
     let email = await User_file.data.email
     let code = await User_file.data.code
-    fetch("http://localhost:2000/voter_for_candidate", {
+    fetch(`${process.env.REACT_APP_URL}/remove`, {
                 method: "POST",
                 crossDomain: true,
                 headers: {
@@ -165,6 +178,7 @@ const auth = async() => {
                 .then(data=>{
                     if (data.status === 'ok') {
                         alert('done')
+                        navigate('/finish')
                     } else {
                         alert('error, please submit again')
                     }
@@ -174,7 +188,7 @@ const auth_tocatch_thebadguy = () => {
     if (candidate.length > 0) {
         return (
             <>
-                <button type="button" onClick={()=>auth}>submit</button>
+                <button type="button" onClick={()=> auth()}  id="voter_submit-button">submit</button>
             </>
         );
     }
@@ -186,12 +200,14 @@ const auth_tocatch_thebadguy = () => {
         <>
             <div className="sider-form_positions">
             {Position.map((title) => (
-               <p id="position">{title.position}</p>
+               <p id="position_for-sider" key={title._id}>{title.position}</p>
             ))}
             </div>
             <div className="result_voting-section">
                 <h1 id="result_Title">{Title}</h1>
+                <div className="candidate_vote_information">
                 {project_impossible_part2()}
+                </div>
                 {auth_tocatch_thebadguy()}
                 {project_impossible()}
                 {button()}
@@ -200,4 +216,4 @@ const auth_tocatch_thebadguy = () => {
     )
 }
 
-export default Voter_platform_vote
+export default Voter_platform_vote;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Side from "../side/side";
 import '../styles/title.css'
 import { Link, useNavigate } from "react-router-dom";
-import Title from "./title";
+require('dotenv').config();
 
 const Position_form = () => {
     const [Position_form, setposition_form] = useState("")
@@ -15,7 +15,7 @@ const Position_form = () => {
         if (Position_form.trim().length===0) {
             Title1.innerText= 'please input your Position'
         } else {
-            fetch('http://localhost:2000/position_title', {
+            fetch(`${process.env.REACT_APP_URL}/position_title`, {
                 method: "POST",
                 crossDomain: true,
                 headers: {

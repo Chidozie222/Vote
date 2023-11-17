@@ -2,8 +2,7 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import '../styles/signin.css';
-
-
+require('dotenv').config();
 
 
 const Signin = () => {
@@ -27,7 +26,7 @@ const Signin = () => {
                         Password.innerText = 'Please input a password'
                     }else{
                         Password.innerText = ''
-                        fetch("http://localhost:2000/login", {
+                        fetch(`${process.env.REACT_APP_URL}/login`, {
                             method: "POST",
                             crossDomain: true,
                             headers: {
@@ -56,7 +55,7 @@ const Signin = () => {
     }
 
     const google = async() => {
-        const response = await fetch('http://localhost:2000/google',
+        const response = await fetch(`${process.env.REACT_APP_URL}/google`,
         {method: 'post'});
         const data = await response.json();
         window.location.assign(data.url);

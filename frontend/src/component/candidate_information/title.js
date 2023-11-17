@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Side from "../side/side";
 import '../styles/title.css'
 import { Link, useNavigate } from "react-router-dom";
+require('dotenv').config();
 
 const Title = () => {
     const [title, settitle] = useState("")
@@ -13,7 +14,7 @@ const Title = () => {
         if (title.trim().length===0) {
             Title1.innerText= 'please input your Election Title'
         } else {
-            fetch('http://localhost:2000/title', {
+            fetch(`${process.env.REACT_APP_URL}/title`, {
                 method: "POST",
                 crossDomain: true,
                 headers: {

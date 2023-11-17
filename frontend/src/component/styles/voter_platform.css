@@ -1,0 +1,89 @@
+.sider-form_positions{
+    display: block;
+    height: 100vh;
+    width: 25%;
+    background-color:#e69d1b;
+    color: white;
+    padding: 150px 30px 12px 40px;
+    position: fixed;
+}
+#position_for-sider{
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 20px 0;
+}
+#position_for-sider:hover{
+    transform: scale(1,2);
+    box-shadow: 2px 1px 0.5px 1px rgba(0, 0, 0, 0.25);
+}
+.result_voting-section{
+    width: 70%;
+    float: right;
+    padding: 12px 23px;
+}
+#result_Title{
+    margin: 30px 0px 50px 70px;
+    font-size: 5rem;
+}
+.candidate_vote_information{
+    display: flex;
+    margin-bottom: 34px;
+}
+.voter_real_info{
+    height: 350px;
+    width: 600px;
+    border-radius: 5%;
+    box-shadow: 1px 4px 2px 3px rgba(0, 0, 0, 0.25);
+    margin: 5px 20px 3px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#candidate_img-for_voting{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+#position{
+    font-size: x-large;
+    font-weight: 800;
+}
+.voter-candidate{
+    font-size: larger;
+    font-weight: 800;
+}
+#voter_btn{
+    background-color: #e69d1b;
+    padding: 7px 19px;
+    border: none;
+    border-radius: 18%;
+    cursor: pointer;
+    color: #fff;
+    font-size: large;
+    font-weight: 800;
+}
+#voter_submit-button{
+    background-color: #e69d1b;
+    padding: 12px 39px;
+    border: none;
+    box-shadow: 1px 4px 2px 3px rgba(0, 0, 0, 0.25), 1px 4px 2px 3px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 20px 20px;
+    color: #fff;
+    font-size: large;
+    font-weight: 800;
+}
+#mission_impossible_dead-button{
+    background-color: #e69d1b;
+    padding: 12px 39px;
+    border: none;
+    box-shadow: 1px 4px 2px 3px rgba(0, 0, 0, 0.25), 1px 4px 2px 3px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 20px 20px;
+    color: #fff;
+    font-size: large;
+    font-weight: 800;
+    float: right;
+}

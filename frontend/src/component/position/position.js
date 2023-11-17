@@ -3,6 +3,7 @@ import axios from "axios"
 import { useParams, Link } from 'react-router-dom';
 import Side from "../side/side";
 import '../styles/home.css';
+require('dotenv').config();
 
 const Position = () => {
     let params = useParams();
@@ -13,7 +14,7 @@ const Position = () => {
     useEffect(()=>{
         window.sessionStorage.setItem('title', Title)
         window.sessionStorage.setItem('Useremail', Useremail)
-        axios.get(`http://localhost:2000/position_title/${Useremail}/${Title}`)
+        axios.get(`${process.env.REACT_APP_URL}/position_title/${Useremail}/${Title}`)
         .then((res)=> {
             setposition(res.data)
         })

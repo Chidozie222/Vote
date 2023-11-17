@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/forget.css';
 import { useNavigate } from "react-router-dom";
+require('dotenv').config();
 
 
 const Forget = () => {
@@ -15,7 +16,7 @@ const Forget = () => {
         if (mail==="") {
             useremail.innerText= 'please input your email'
         } else {
-            fetch('http://localhost:2000/fogetpassword', {
+            fetch(`${process.env.REACT_APP_URL}/fogetpassword`, {
                 method: "POST",
                 crossDomain: true,
                 headers: {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/verify.css'
 import { useNavigate } from "react-router-dom";
+require('dotenv').config();
 
 
 
@@ -32,7 +33,7 @@ const Verify = () => {
                             Password.innerText = "Please input your new password"
                         } else {
                             if (npassword === cnpassword) {
-                                fetch("http://localhost:2000/verifypassword", {
+                                fetch(`${process.env.REACT_APP_URL}/verifypassword`, {
                             method: "POST",
                             crossDomain: true,
                             headers: {
@@ -71,7 +72,7 @@ const Verify = () => {
         if (mail==="") {
             useremail.innerText= 'please input your email'
         } else {
-            fetch('http://localhost:2000/fogetpassword', {
+            fetch(`${process.env.REACT_APP_URL}/fogetpassword`, {
                 method: "POST",
                 crossDomain: true,
                 headers: {

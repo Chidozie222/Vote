@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/side.css'
 import { Link, useNavigate } from "react-router-dom";
+require('dotenv').config();
 
 const Side = () => {
     const [Userdata, setUserdata] = useState("");
@@ -13,7 +14,7 @@ const Side = () => {
             if (data1 === '[object Object]') {
                 navigate('/Signup')
             } else {
-                fetch("http://localhost:2000/user", {
+                fetch(`${process.env.REACT_APP_URL}/user`, {
                     method: "POST",
                     crossDomain: true,
                     headers: {
@@ -31,7 +32,7 @@ const Side = () => {
                 })
             }
         } else {
-            fetch("http://localhost:2000/user", {
+            fetch(`${process.env.REACT_APP_URL}/user`, {
                     method: "POST",
                     crossDomain: true,
                     headers: {

@@ -16,6 +16,9 @@ import Guest from './guest/guest-first_page.jsx';
 import Guest_verify from './guest/guest-verify.jsx';
 import Voting_plalform_signin from './voting_platform/voting.jsx';
 import Voter_platform_vote from './voting_platform/voting_paltform.jsx';
+import Redirect from './redirect/redirect.jsx';
+import Result_title from './Results/result_title.jsx';
+import Results from './Results/results.jsx';
 
 const Routing = () => {
     return(
@@ -39,6 +42,9 @@ const Routing = () => {
                         <Route path='/voterprofile/:Useremail' element= {<Guest_verify/>}/>
                         <Route  path='/voter_platform/:Title/:Useremail' element={<Voting_plalform_signin/>}/>
                         <Route path='/Voter_platform_vote-selection/:Title/:Useremail/:_id' element= {<Voter_platform_vote/>}/>
+                        <Route path='/finish' element= {<Redirect/>}/>
+                        <Route path='/results' element= {<Result_title/>}/>
+                        <Route path='/results/:Useremail/:Title' element= {<Results/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

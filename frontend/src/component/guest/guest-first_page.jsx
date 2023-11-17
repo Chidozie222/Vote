@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/forget.css';
 import { useNavigate, useParams } from "react-router-dom";
+require('dotenv').config();
 
 
 const Guest = () => {
@@ -18,7 +19,7 @@ const Guest = () => {
         if (mail==="") {
             useremail.innerText= 'please input your email'
         } else {
-            fetch('http://localhost:2000/sendotp', {
+            fetch(`${process.env.REACT_APP_URL}/sendotp`, {
                 method: "POST",
                 crossDomain: true,
                 headers: {

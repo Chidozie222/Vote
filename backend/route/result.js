@@ -42,7 +42,7 @@ results.get('/candidate_id/:_id', async(req, res) => {
 })
 
 results.post('/voter_for_candidate', async(req, res) => {
-    const {Name, email, Title, candidateName, position, Useremail} = req.body
+    const {Name, email, Title, candidateName, position, image, Useremail} = req.body
     try {
         let useremail = await result.find({Useremail})
         if (useremail) {
@@ -51,29 +51,51 @@ results.post('/voter_for_candidate', async(req, res) => {
                 let pos = await result.find({position})
                 if (pos) {
                     let canName = await result.find({candidateName})
-                    if (canName) {
-                        let name = await result.findOne({email})
-                        if (name) {
+                    if (canName[0]) {
                             res.send({status: 'error', message: 'You have already voted for a candidate, please vote for another position or click on sumbit'})
                         } else {
-                            result.create(
+                            await result.create(
                                 {
                                     Name,
                                     email,
                                     Title,
+                                    image, 
                                     candidateName,
                                     position,
                                     Useremail
                                 }
                             )
                             res.send({status: 'ok', message: 'successfully voted for the candidate, move to the next position'})
-                        }
                     }
                 }
             }
         }
     } catch (error) {
         res.send({status: 'error', message: 'error in the server'})
+        console.log(error);
+    }
+})
+
+results.get('/results/:Useremail/:Title/:position/:candidateName', async(req, res) => {
+    const {Useremail, Title, position, candidateName} = req.params
+    try {
+        let user = await result.find({Useremail})
+        if (user) {
+            let title = await result.find({Title})
+            if (title.length>0) {
+                let pos = await result.find({position})
+                if (pos) {
+                    let candidate = await result.find({candidateName})
+                    if (candidate) {
+                        res.send({status: 'ok', data: candidate})
+                    } else{
+                        res.send({status: 'error'})
+                    }
+                }
+            }
+        }
+    } catch (error) {
+        res.send({status: 'error'})
     }
 })
 
@@ -97,20 +119,19 @@ results.get('/remove/:Useremail/:Title/:email', async(req, res) => {
     const {Useremail, Title, email} = req.params
     try {
         let user = await remove.find({Useremail})
-        console.log(user);
         if (user) {
             let title = await remove.find({Title})
-            if (title) {
-                let mail = await remove.findOne({email})
-                if (mail) {
+            if (title.length>0) {
+                if(title[0].email == email ){
                     res.send({status: 'ok', message: 'sorry you have already voted for this title'})
-                } else {
-                    res.send({status: 'pending', message: `welcome`})
                 }
+            } else {
+                res.send({status: 'pending', message: `welcome`})
             }
         }
     } catch (error) {
         res.send({status: 'error', message: 'error in the server'})
+
     }
 })
 

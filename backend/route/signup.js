@@ -28,7 +28,6 @@ try {
     }
 } catch (error) {
     res.send({status: "error", message: "error with the server"})
-    console.log(error);
 }
 })
 

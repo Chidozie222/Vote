@@ -3,6 +3,7 @@ import axios from "axios";
 import Side from "../side/side";
 import { useParams, Link } from "react-router-dom";
 import '../styles/candidate.css';
+require('dotenv').config();
 
 
 const Candidate_information = () => {
@@ -15,7 +16,7 @@ const Candidate_information = () => {
     const [Affiliate, setAffiliate] = useState('')
 
     useEffect(()=>{
-        axios.get(`http://localhost:2000/getcandidateinfo/${Useremail}/${Title}/${position}`)
+        axios.get(`${process.env.REACT_APP_URL}/getcandidateinfo/${Useremail}/${Title}/${position}`)
         .then((res)=> {
             setcandidate(res.data)
         })
@@ -31,7 +32,7 @@ const Candidate_information = () => {
         candidate_file_info.append('Useremail', Useremail)
         candidate_file_info.append('image', image)
 
-        fetch('http://localhost:2000/cadidateInformation', {
+        fetch(`${process.env.REACT_APP_URL}/cadidateInformation`, {
             method: 'POST',
             body: candidate_file_info,
         })
@@ -75,7 +76,7 @@ const Candidate_information = () => {
                         candidate.data.map((title) => (
                             <>
                             <div className="candidate_profile">
-                            <img src={`http://localhost:2000/uploads/${title.image}`} alt={title.candidateName} id="candidate_img"/>
+                            <img src={`${process.env.REACT_APP_URL}/uploads/${title.image}`} alt={title.candidateName} id="candidate_img"/>
                             <div className="right">
                                 <p className="label-candidate">{title.candidateName}</p>
                                 <p className="label-candidate">{title.position}</p>

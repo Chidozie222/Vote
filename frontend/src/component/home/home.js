@@ -3,12 +3,13 @@ import Side from "../side/side";
 import '../styles/home.css'
 import { Link } from "react-router-dom";
 import axios from "axios"
+require('dotenv').config();
 
 const Home = () => {
     const [Title2, setTitle2] = useState([])
     let Useremail = window.sessionStorage.getItem('email')
     useEffect(() => {
-        axios.get('http://localhost:2000/auth/google/callback')
+        axios.get(`${process.env.REACT_APP_URL}/auth/google/callback`)
     .then((res) => {
        console.log(res.data);
     })
@@ -19,7 +20,7 @@ const Home = () => {
 
     useEffect(()=>{
         console.log("useEffect started");
-    axios.get(`http://localhost:2000/title/${Useremail}`)
+    axios.get(`${process.env.REACT_APP_URL}/title/${Useremail}`)
     .then((res) => {
         console.log("Request successful");
         setTitle2(res.data);

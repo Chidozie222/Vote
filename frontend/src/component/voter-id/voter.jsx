@@ -3,6 +3,7 @@ import Side from '../side/side';
 import '../styles/voter.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+require('dotenv').config();
 
 
 const Voter_preview = () => {
@@ -10,11 +11,11 @@ const Voter_preview = () => {
     let Useremail = params.Useremail
     const [voter, setvoter] = useState("")
     useEffect(()=>{
-        axios.get(`http://localhost:2000/csvusers/${Useremail}`)
+        axios.get(`${process.env.REACT_APP_URL}/csvusers/${Useremail}`)
         .then(res=>{
             setvoter(res.data)
         })
-    },[])
+    })
 
 
     return(

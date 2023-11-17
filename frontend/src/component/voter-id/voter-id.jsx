@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/voter-id.css';
 import Side from '../side/side';
 import { Link } from 'react-router-dom';
+require('dotenv').config();
 
 const Voter = () => {
 let Useremail = window.sessionStorage.getItem('email')
@@ -13,11 +14,11 @@ let Useremail = window.sessionStorage.getItem('email')
     const csv_package = () => {
         let csvfile = document.getElementById('voter_img').files[0];
         if (csvfile.name) {
-            const csv = new FormData
+            const csv = new FormData()
         csv.append('csvfile', csvfile)
 
         
-        fetch('http://localhost:2000/csvfile', {
+        fetch(`${process.env.REACT_APP_URL}/csvfile`, {
             method: 'POST',
             body: csvfile,
         })

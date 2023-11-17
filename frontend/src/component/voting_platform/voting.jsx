@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import '../styles/voting.css';
+require('dotenv').config();
 
 
 
@@ -30,7 +31,7 @@ const Voting_plalform_signin = () => {
                         Password.innerText = 'Please input a code or Phone Number'
                     }else{
                         Password.innerText = ''
-                        fetch("http://localhost:2000/voter_platform-login", {
+                        fetch(`${process.env.REACT_APP_URL}/voter_platform-login`, {
                             method: "POST",
                             crossDomain: true,
                             headers: {

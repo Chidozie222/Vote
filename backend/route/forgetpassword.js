@@ -49,7 +49,6 @@ fp.post('/verifypassword', async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ message: 'Error verifying OTP', error });
-        console.log(error);
     }
 });
 

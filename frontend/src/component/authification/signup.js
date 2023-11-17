@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/Signup.css';
+require('dotenv').config();
+
 
 const Signup = () => {
     const [name, setname] = useState("")
@@ -31,7 +33,7 @@ const Signup = () => {
                     }else{
                     if (password === cpassword) {
                         Password.innerText = ''
-                        fetch("http://localhost:2000/register", {
+                    fetch(`${process.env.REACT_APP_URL}/register`, {
                             method: "POST",
                             crossDomain: true,
                             headers: {
