@@ -51,21 +51,21 @@ results.post('/voter_for_candidate', async(req, res) => {
                 let pos = await result.find({position})
                 if (pos) {
                     let canName = await result.find({candidateName})
-                    if (canName[0]) {
+                    for (let index = 0; index < canName.length; index++) {
+                        if (canName[index].data.Name == Name) {
                             res.send({status: 'error', message: 'You have already voted for a candidate, please vote for another position or click on sumbit'})
                         } else {
-                            await result.create(
-                                {
-                                    Name,
-                                    email,
-                                    Title,
-                                    image, 
-                                    candidateName,
-                                    position,
-                                    Useremail
-                                }
+                            await result.updateOne(
+                                {candidateName: candidateName},
+                                {$set: {
+                                    data: {
+                                        Name,
+                                        email
+                                    }
+                                }}
                             )
                             res.send({status: 'ok', message: 'successfully voted for the candidate, move to the next position'})
+                    }
                     }
                 }
             }

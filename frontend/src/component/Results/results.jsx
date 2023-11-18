@@ -68,17 +68,31 @@ const Results = () => {
 
   const handleButtonClick = async (position) => {
     const candidateInfo = await getCandidateInfo(position);
-
+    const name = candidateInfo?.map((candidate) => candidate.candidateName)
+    console.log(name);
     // Call the getVotingResults function and log the results
-    const resultsData = {};
-    for (let index = 0; index < candidateInfo.length; index++) {
-      const resultData = await getVotingResults(position, candidateInfo[index].candidateName);
-      resultsData[candidateInfo[index].candidateName] = resultData;
+    for (let index = 0; index < name.length; index++) {
+      const votingResults = await getVotingResults(position, name[index]);
+      if (votingResults && votingResults.groupCounts) {
+        // Loop through the web array and fetch candidateName values
+        const webCandidates = candidateInfo?.map((candidate) => candidate.candidateName);
+        let webs = webCandidates
+        if (webs.length>0) {
+          for (let i = 0; i < webs.length; i++) {
+            let websmart = webs[i]
+            setResults({ [position]: candidateInfo, resultsData: votingResults });
+            return websmart
+          }
+        }
+      } else {
+        console.error('Error fetching voting results');
+      }
     }
 
-    setResults({ [position]: candidateInfo, resultsData });
+    
+    // Check if votingResults contains valid data
   };
-
+  console.log(results);
   return (
     <>
       <Side />
@@ -92,7 +106,7 @@ const Results = () => {
                 <button type="button" onClick={() => handleButtonClick(title.position)}>
                   View the number of votes
                 </button>
-
+                
                 {/* Display candidate information */}
                 {results[title.position] && results[title.position].length > 0 ? (
                   <div>
@@ -104,17 +118,22 @@ const Results = () => {
                       </div>
                     ))}
                     {/* Display additional results based on voting data */}
-                    {results.resultsData && results.resultsData[title.position] ? (
+                    {results.webs?.map((file) => (
                       <div>
-                        {results.resultsData[title.position].groupCounts.map((item) => (
-                          <div className="class" key={item.candidateName}>
-                            <p>{item.candidateName}: {item.totalCount}</p>
+                        {console.log(results.resultsData[file])}
+                        {results.resultsData && results.resultsData[file] ? (
+                          <div>
+                            {results.resultsData[file].groupCounts?.map((item) => (
+                              <div className="class" key={item.candidateName}>
+                                <p>{item.candidateName}: {item.totalCount}</p>
+                              </div>
+                            ))}
                           </div>
-                        ))}
+                        ) : (
+                          <h4>No additional voting results found for {file}</h4>
+                        )}
                       </div>
-                    ) : (
-                      <h4>No additional voting results found for {title.position}</h4>
-                    )}
+                    ))}
                   </div>
                 ) : (
                   <h4>No candidates found for {title.position}</h4>
