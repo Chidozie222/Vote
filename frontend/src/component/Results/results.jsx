@@ -32,6 +32,7 @@ const Results = () => {
       return [];
     }
   };
+
   const getVotingResults = async (position, candidateName) => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_URL}/results/${Useremail}/${Title}/${position}/${candidateName}`);
@@ -65,19 +66,19 @@ const Results = () => {
     }
   };
 
-
   const handleButtonClick = async (position) => {
     const candidateInfo = await getCandidateInfo(position);
 
     // Call the getVotingResults function and log the results
+    const resultsData = {};
     for (let index = 0; index < candidateInfo.length; index++) {
-        const resultData = await getVotingResults(position, candidateInfo[index].candidateName);
-        setResults({ [position]: candidateInfo, resultData});
+      const resultData = await getVotingResults(position, candidateInfo[index].candidateName);
+      resultsData[candidateInfo[index].candidateName] = resultData;
     }
-    
+
+    setResults({ [position]: candidateInfo, resultsData });
   };
 
-  console.log(results);
   return (
     <>
       <Side />
@@ -102,6 +103,18 @@ const Results = () => {
                         <img src={`${process.env.REACT_APP_URL}/uploads/${candidate.image}`} alt={candidate.candidateName} />
                       </div>
                     ))}
+                    {/* Display additional results based on voting data */}
+                    {results.resultsData && results.resultsData[title.position] ? (
+                      <div>
+                        {results.resultsData[title.position].groupCounts.map((item) => (
+                          <div className="class" key={item.candidateName}>
+                            <p>{item.candidateName}: {item.totalCount}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <h4>No additional voting results found for {title.position}</h4>
+                    )}
                   </div>
                 ) : (
                   <h4>No candidates found for {title.position}</h4>
@@ -114,7 +127,7 @@ const Results = () => {
         </div>
       </div>
     </>
-  )
+  );
 };
 
 export default Results;
