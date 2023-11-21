@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../styles/voter-id.css';
 import Side from '../side/side';
 import { Link } from 'react-router-dom';
@@ -11,8 +11,16 @@ let Useremail = window.sessionStorage.getItem('email')
               document.getElementById('link_message').innerText = `This is your link: http://localhost:3000/sent/${Useremail}`;
     }
 
-    const csv_package = () => {
-        let csvfile = document.getElementById('voter_img').files[0];
+    useEffect(() => {
+        const csvfolder = document.getElementById('add_icon')
+        if (csvfolder) {
+            csvfolder.addEventListener('click', () => {
+                document.getElementById('voter_img').click();
+            })
+
+
+            document.getElementById('voter_img').addEventListener('change', (event) => {
+                let csvfile = event.target.files[0];
         if (csvfile.name) {
             const csv = new FormData()
         csv.append('csvfile', csvfile)
@@ -30,16 +38,11 @@ let Useremail = window.sessionStorage.getItem('email')
                 alert(data.message)
             }
         })
-        }
     }
-
-    const csvfolder = document.getElementById('add_icon')
-    if (csvfolder) {
-        csvfolder.addEventListener('click', () => {
-            document.getElementById('voter_img').click();
-            csv_package()
         })
     }
+    }, []);
+    
 
     return(
         <>

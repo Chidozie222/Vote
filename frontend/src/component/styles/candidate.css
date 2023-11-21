@@ -7,15 +7,7 @@
     display: flex;
     align-items: center;
 }
-#position_title_name{
-    color: #000;
-    font-family: Rubik;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin: 100px 0 0 50px;
-}
+
 .btn{
     text-align: center;
     padding: 0 40px 0 40px;
@@ -27,6 +19,28 @@
     height: 50px;
     border-radius: 50px 50px 50px 50px;
     border: none
+}
+
+.btn-right{
+    float: right;
+    width: 500px;
+}
+#can-btn{
+    margin: 0 5px 0 5px;
+}
+#btn_link{
+    margin: 0;
+    display: inline;
+}
+
+#position_title_name{
+    color: #000;
+    font-family: Rubik;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 100px 0 0 50px;
 }
 .candidate_side{
     position: relative;
@@ -90,15 +104,4 @@ label{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-}
-.btn-right{
-    float: right;
-    width: 500px;
-}
-#can-btn{
-    margin: 0 5px 0 5px;
-}
-#btn_link{
-    margin: 0;
-    display: inline;
 }

@@ -49,7 +49,7 @@ const Voting_plalform_signin = () => {
                             .then(data => {
                                 if(data.status === 'ok'){
                                     alert(data.message)
-                                    navigate(`/Voter_platform_vote-selection/${Title}/${Useremail}/${data.data._id}`)
+                                    navigate(`/Voter_platform_vote-selection/${Title}/${Useremail}/${data.data[0]._id}`)
                                 } else{
                                     alert(data.message)
                                 }

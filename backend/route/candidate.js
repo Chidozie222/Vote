@@ -30,15 +30,33 @@ candidateInfo.post('/cadidateInformation', upload.single('image'), async(req, re
     if (!req.file) {
         return res.status(400).send({ status: 'error', message: 'No image file uploaded' });
     }
-    
+    console.log(req.file);
+    let maxsize = 2 * 1024 * 1024
     const imagePath = req.file.filename;  // Corrected this line
     try {
+        if (maxsize >= req.file.size) {
+            let useremail = await candidate.find({Useremail})
+        if (useremail) {
         let user = await candidate.find({position})
-        if (user) {
-            let newold = await candidate.find({candidateName})
-        if(newold.length>0){
-            res.send({status: 'error', message: 'candidate alrady exist'})
-        } else{
+        if (user.length > 0) {
+            for (let i = 0; i < user.length; i++) {
+                if(user[i].candidateName == candidateName){
+                    res.send({status: 'error', message: 'candidate alrady exist'})
+                } else{
+                await candidate.create({
+                    candidateName,
+                    position,
+                    Affiliate,
+                    Title,
+                    Useremail,
+                    image: imagePath,
+                })
+                res.send({status: 'ok', message: 'data inputed successfully'})
+                } 
+            
+    } 
+    }
+    else{
         await candidate.create({
             candidateName,
             position,
@@ -48,8 +66,11 @@ candidateInfo.post('/cadidateInformation', upload.single('image'), async(req, re
             image: imagePath,
         })
         res.send({status: 'ok', message: 'data inputed successfully'})
-        } 
+        }
     }
+} else{
+    res.send({status: 'error', message: 'file is too large, max of 2MB is alowed'})
+}
     } catch (error) {
         res.send({status: 'error', message: 'error send the data to the server. please try again later'})
     }

@@ -140,7 +140,7 @@ const project_impossible_part2 = () => {
             <>
                 {candidate.slice((page - 1) * 3, page * 3).map((title) => (
                     <React.Fragment key={title._id}>
-                        <div className="voter_real_info">
+                        <div className="col-sm-6">
                         <img src={`${process.env.REACT_APP_URL}/uploads/${title.image}`} alt={title.candidateName} id="candidate_img-for_voting"/>
                         <p id="position">{title.candidateName}</p>
                         <p className="voter-candidate">{title.position}</p>
@@ -203,10 +203,14 @@ const auth_tocatch_thebadguy = () => {
                <p id="position_for-sider" key={title._id}>{title.position}</p>
             ))}
             </div>
-            <div className="result_voting-section">
+            <div className="container-xl big-padding">
                 <h1 id="result_Title">{Title}</h1>
-                <div className="candidate_vote_information">
+                <div id="menu-jk" className="nav-col text-white shadow-md mb-3">
+                <div className="container">
+                <div className="row">
                 {project_impossible_part2()}
+                </div>
+                </div>
                 </div>
                 {auth_tocatch_thebadguy()}
                 {project_impossible()}

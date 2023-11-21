@@ -68,15 +68,15 @@ voterprofile.post('/voter_platform-login', async(req, res) => {
     try{
         let useremail = await csvmodel.find({Useremail})
         if (useremail) {
-            let Email = await csvmodel.findOne({email})
+            let Email = await csvmodel.find({email})
             if (Email) {
-                if (code === Email.code) {
-                    res.send({status: 'ok', message: 'User Vaild', data: Email})
-                } else {
-                    res.send({status: 'error', message: 'user not vaild'})
+                for (let i = 0; i < Email.length; i++) {
+                    if (code === Email[i].code) {
+                        res.send({status: 'ok', message: 'User Vaild', data: Email})
+                    } else {
+                        res.send({status: 'error', message: 'user not vaild'})
+                    }
                 }
-            } else {
-                res.send({status: 'error', message: 'user not vaild'})
             }
         } else {
             res.send({status: 'error', message: 'user not vaild'})

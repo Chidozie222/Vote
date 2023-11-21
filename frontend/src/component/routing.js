@@ -19,6 +19,7 @@ import Voter_platform_vote from './voting_platform/voting_paltform.jsx';
 import Redirect from './redirect/redirect.jsx';
 import Result_title from './Results/result_title.jsx';
 import Results from './Results/results.jsx';
+import Setting from './setting/setting.jsx';
 
 const Routing = () => {
     return(
@@ -45,6 +46,7 @@ const Routing = () => {
                         <Route path='/finish' element= {<Redirect/>}/>
                         <Route path='/results' element= {<Result_title/>}/>
                         <Route path='/results/:Useremail/:Title' element= {<Results/>}/>
+                        <Route path='/settings' element= {<Setting/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

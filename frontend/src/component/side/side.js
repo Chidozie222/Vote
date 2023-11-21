@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/side.css'
 import { Link, useNavigate } from "react-router-dom";
+import image from'../images/default-avatar-profile-icon-vector-social-media-user-image-182145777.png';
 require('dotenv').config();
 
 const Side = () => {
@@ -10,8 +11,8 @@ const Side = () => {
     const side = (data) => {
         let datas = window.sessionStorage.getItem('data')
         let data1 = window.sessionStorage.getItem('data1')
-        if (datas === '[object Object]') {
-            if (data1 === '[object Object]') {
+        if (datas === '') {
+            if (data1 === '') {
                 navigate('/Signup')
             } else {
                 fetch(`${process.env.REACT_APP_URL}/user`, {
@@ -32,6 +33,7 @@ const Side = () => {
                 })
             }
         } else {
+            window.sessionStorage.setItem('email_setting', datas)
             fetch(`${process.env.REACT_APP_URL}/user`, {
                     method: "POST",
                     crossDomain: true,
@@ -50,26 +52,25 @@ const Side = () => {
                 })
         }
 
+        console.log(data);
         if (data) {
             window.sessionStorage.setItem('email', data.Useremail)
-            if (data.Photo) {
-                return data.map((item) => {
+            if (data?.photo) {
                     return(
                         <>
                         <div className="profile">
-                        <p id="user_name">{item.Username}</p>
-                        <img src={item.Photo} id="img"/>
+                        <p id="user_name">{data.Username}</p>
+                        <img src={`${process.env.REACT_APP_URL}/uploads/${data.photo}`} id="img"/>
                         </div>
                         <p id="Admin">Admin</p>
                         </>
                     )
-                })
             } else{
                 return(
                     <>
                     <div className="profile">
                     <p id="user_name">{data.Username}</p>
-                        <img src='../images/img.png' id="img"/>
+                        <img src={image} id="img"/>
                         </div>
                         <p id="Admin">Admin</p>
                     </>

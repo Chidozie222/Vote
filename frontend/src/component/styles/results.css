@@ -1,0 +1,54 @@
+.home_result{
+    width: 72%;
+    float: right;
+}
+#Position_title_result{
+    margin: 23px 0 12px 34px;
+}
+.home_body_result{
+    margin: 34px 0 0 0;
+    padding: 23px;
+}
+.Add_new_result{
+    width: 650px;
+    box-shadow: rgba(0, 0, 0, 0.5);
+    height: auto;
+    border: 1px solid #000;
+    margin: 35px 0;
+    padding: 20px 10px;
+}
+#poll_result{
+    display: inline;
+    font-size: x-large;
+    font-weight: 700;
+}
+#button_result{
+    float: right;
+    padding: 9px 16px;
+    background-color: #e69d1b;
+    border: none;
+    color: #fff;
+    border-radius: 13px;
+    box-shadow: 1px 4px 2px 3px rgba(0, 0, 0, 0.25), 1px 4px 2px 3px rgba(0, 0, 0, 0.25) inset;
+    cursor: pointer;
+}
+.div_result{
+    height: auto;
+    padding: 12px 20px;
+}
+.first_data_for_results{
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 0 0 12px;
+}
+#img-for-candidate{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+#result-candidateName{
+    display: inline;
+}
+#votes{
+    display: inline;
+}

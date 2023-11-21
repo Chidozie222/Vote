@@ -52,20 +52,20 @@ results.post('/voter_for_candidate', async(req, res) => {
                 if (pos) {
                     let canName = await result.find({candidateName})
                     for (let index = 0; index < canName.length; index++) {
-                        if (canName[index].data.Name == Name) {
-                            res.send({status: 'error', message: 'You have already voted for a candidate, please vote for another position or click on sumbit'})
-                        } else {
-                            await result.updateOne(
-                                {candidateName: candidateName},
-                                {$set: {
-                                    data: {
-                                        Name,
-                                        email
-                                    }
-                                }}
-                            )
-                            res.send({status: 'ok', message: 'successfully voted for the candidate, move to the next position'})
-                    }
+                            if (canName[index] && canName[index].data && canName[index].data[index] && canName[index].data[index].Name == Name) {
+                                res.send({status: 'error', message: 'You have already voted for a candidate, please vote for another position or click on sumbit'})
+                            } else {
+                                await result.updateOne(
+                                    {candidateName: candidateName},
+                                    {$push: {
+                                        data: [{
+                                            Name,
+                                            email
+                                        }]
+                                    }}
+                                )
+                                res.send({status: 'ok', message: 'successfully voted for the candidate, move to the next position'})
+                        }
                     }
                 }
             }
@@ -131,6 +131,7 @@ results.get('/remove/:Useremail/:Title/:email', async(req, res) => {
         }
     } catch (error) {
         res.send({status: 'error', message: 'error in the server'})
+        console.log(error);
 
     }
 })

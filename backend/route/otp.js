@@ -34,19 +34,22 @@ otp.post('/verifyotp', async (req, res) => {
         const isValid = await verifyOTP(OTP);
         const code = PhoneNumber;
         if (isValid === otp) {
-            const Email = await Otp.findOne({email})
-            if (Email) {
-                res.status(501).json({message: "this user already exist"})
-            } else {
-                await Otp.create({
-                    Name,
-                    code,
-                    email,
-                    Useremail
-                });
-                await deleteHashedOTP(email);
-                res.status(200).json({status: 'ok',  message: 'OTP verified successfully' });
+            let user = await Otp.find({Useremail})
+            if (user) {
+                if (user.email == email) {
+                    res.status(501).json({message: "this user already exist"})
+                } else {
+                    await Otp.create({
+                        Name,
+                        code,
+                        email,
+                        Useremail
+                    });
+                    await deleteHashedOTP(email);
+                    res.status(200).json({status: 'ok',  message: 'OTP verified successfully' });
+                }
             }
+           
         } else {
             res.status(400).json({ message: 'Invalid OTP' });
         }
