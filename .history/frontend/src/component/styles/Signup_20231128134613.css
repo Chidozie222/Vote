@@ -1,0 +1,334 @@
+/*    background-color: #e69d1b;*/
+
+:root {
+    --gold : #d28f1c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background {
+    background: var(--gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+.background .first {
+    height: 100px;
+    width: 250px;
+    background-color: rgba(199, 199, 199, 0.6);
+    transform: skew(20deg);
+    rotate: 15deg;
+    position: absolute;
+    z-index: 1;
+    top: 540px;
+    left: -30px;
+}
+
+.background .second {
+    height: 120px;
+    width: 250px;
+    background-color: rgba(199, 199, 199, 0.6);
+    transform: skew(20deg);
+    rotate: 15deg;
+    position: absolute;
+    top: 400px;
+    left: -30px;
+}
+
+.background .third {
+    height: 120px;
+    width: 250px;
+    background-color: rgba(199, 199, 199, 0.6);
+    transform: skew(20deg);
+    rotate: 15deg;
+    position: absolute;
+    top: 260px;
+    left: -40px;
+}
+
+.background .fourth {
+    height: 90px;
+    width: 200px;
+    background-color: rgba(199, 199, 199, 0.6);
+    transform: skew(-20deg);
+    rotate: -20deg;
+    position: absolute;
+    right: -5px;
+    top: 100px;
+}
+
+.background .fifth {
+    height: 90px;
+    width: 200px;
+    background-color: rgba(199, 199, 199, 0.6);
+    transform: skew(-20deg);
+    rotate: -20deg;
+    position: absolute;
+    right: -5px;
+    top: 250px;
+}
+
+.background .sixth {
+    height: 90px;
+    width: 200px;
+    background-color: rgba(199, 199, 199, 0.6);
+    transform: skew(-20deg);
+    rotate: -20deg;
+    position: absolute;
+    right: -5px;
+    top: 400px;
+}
+.sign-up {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0;
+    height: 90vh;
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 2%;
+}
+
+.sign-up .siderbar {
+    height: 90vh;
+    width: 50ch;
+    background-color: rgb(238, 161, 29);
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.sign-up .siderbar img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.sign-up .siderbar p {
+    width: 40ch;
+    text-align: center;
+}
+.sign-up .form_signup {
+    width: 100%;
+}
+.sign-up .form_signup nav {
+    width: 100%;
+    height: 7rem;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 0 2.7rem;
+    margin-top: 23px;
+}
+.sign-up .form_signup nav p {
+    display: inline;
+    font-size: 1.5rem;
+    float: right;
+    margin: 0 2rem;
+}
+.sign-up .form_signup nav a {
+    display: inline;
+    float: right;
+    margin: 0;
+}
+.sign-up .form_signup nav a button {
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border-radius: 3px;
+    border: 0.5px solid #000000;
+    color: #000000;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.sign-up .form_signup .form {
+    height: 70%;
+    width: 90ch;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up .form_signup .form h1 {
+    margin: 3rem 0 2rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.sign-up .form_signup .form form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up .form_signup .form form input {
+    background-color: #e8e8e8;
+    width: 70ch;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #908d8d;
+    margin: 3rem 0 0 0;
+    border-bottom: 5px solid #908d8d;
+    padding: 0 0 0 1rem;
+}
+
+.sign-up .form_signup .form form .phone {
+    width: 30ch;
+}
+
+
+.sign-up .form_signup .form button {
+    width: 100%;
+    margin: 3rem 0;
+    color: #fff;
+    font-weight: 800;
+    padding: 1.5rem 0;
+    background-color: var(--gold);
+    border: none;
+    font-size: 2rem;
+}
+
+.sign-up .form_signup .form form .pass {
+    z-index: 2;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 400px;
+    right: 310px;
+}
+
+#hidePassword {
+    display: none;
+}
+
+.sign-up .form_signup .form form div .fas {
+    color: #000000;
+}
+
+.sign-up .form_signup .form .fa-arrow-right{
+    color: #fff;
+    font-size: 3rem;
+    position: absolute;
+    top: 555px;
+    right: 340px;
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+    .sign-up .siderbar {
+        display: none;
+    }
+    .sign-up {
+        display: flex;
+        flex-direction: ;
+        height: 90vh;
+        width: 90%;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 2%;
+    }
+
+    .sign-up .form_signup .form form .pass {
+        position: absolute;
+        top: 50%;
+        right: 15%;
+    }
+    .sign-up .form_signup  {
+        display: grid;
+        align-items:center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sign-up .form_signup .form {
+        position: relative;
+        top: 0%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sign-up .form_signup .form .fa-arrow-right{
+        position: absolute;
+        top: 94%;
+        right: 16%;
+    }
+
+    .sign-up .form_signup nav {
+        width: 100%;
+        height: 7rem;
+        position: relative;
+        margin: 0;
+        top: 0;
+        left: 0%;
+    }
+    .sign-up .form_signup nav p {
+        display: inline;
+        font-size: 1rem;
+        float: right;
+        margin: 0 0.5rem;
+    }
+    .sign-up .form_signup nav a button {
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    .sign-up .form_signup .form h1 {
+        margin: 1rem 0 1.5rem;
+        font-size: 3rem;
+        width: 100%;
+    }
+
+    .sign-up .form_signup .form form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sign-up .form_signup .form form input {
+        width: 70%;
+        margin: 3rem 0 0 0;
+    }
+
+    .sign-up .form_signup .form button {
+        width: 80%;
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+    .sign-in .form_signin  {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items:center;
+        justify-content: center;
+    }
+  
+    .sign-in .form_signin .form  .fa-arrow-right{
+        position: absolute;
+        top: 71%;
+        right: 16%;
+    }
+  
+    .sign-in .form_signin .form button {
+      width: 80%;
+  }
+  .sign-in .form_signin .form form input {
+    width: 80%;
+    margin: 3rem 0 0 0;
+  }
+}

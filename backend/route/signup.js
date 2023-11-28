@@ -11,7 +11,7 @@ const user = mongoose.model('user')
 
 
 signup.post('/register', async(req, res) => {
-    const {Username, Useremail, password} = req.body;
+    const {Username, Useremail, PhoneNumber, password} = req.body;
 try {
     const oldUser = await user.findOne({Useremail})
 
@@ -21,6 +21,7 @@ try {
         await user.create({
             Username,
             Useremail,
+            PhoneNumber,
             password
         })
         let Newuser = await user.findOne({Useremail})

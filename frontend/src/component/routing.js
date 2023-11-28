@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Main from './main'
-import Signup from './authification/signup';
-import Signin from './authification/signin';
+import Signup from './authification/signup.jsx';
+import Signin from './authification/signin.jsx';
 import Verify from './authification/verify';
 import Forget from './authification/forget';
 import Home from './home/home';
