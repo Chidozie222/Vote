@@ -248,7 +248,8 @@
         right: 15%;
     }
     .sign-up .form_signup  {
-        display: grid;
+        display: flex;
+        flex-direction: column;
         align-items:center;
         justify-content: center;
         width: 100%;
@@ -259,6 +260,7 @@
         top: 0%;
         display: flex;
         flex-direction: column;
+        width: 100%;
     }
 
     .sign-up .form_signup .form .fa-arrow-right{
@@ -272,7 +274,7 @@
         height: 7rem;
         position: relative;
         margin: 0;
-        top: 0;
+        top: -10%;
         left: 0%;
     }
     .sign-up .form_signup nav p {
@@ -306,34 +308,4 @@
     .sign-up .form_signup .form button {
         width: 80%;
     }
-}
-
-
-@media only screen and (max-width: 700px) {
-    .sign-up .form_signup  {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items:center;
-        justify-content: center;
-    }
-  
-    .sign-up .form_signup .form  .fa-arrow-right{
-        position: absolute;
-        top: 79%;
-        right: 16%;
-    }
-  
-    .sign-up .form_signup .form button {
-      width: 80%;
-  }
-  .sign-up .form_signup .form form input {
-    width: 80%;
-    margin: 3rem 0 0 0;
-  }
-
-  .sign-up .form_signup nav {
-    width: 90%;
-    height: 7rem;
-}
 }
