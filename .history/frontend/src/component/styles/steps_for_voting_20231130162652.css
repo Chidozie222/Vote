@@ -1,0 +1,28 @@
+.container {
+    width: 50ch;
+    height: ;
+}
+
+.container .Setup_body {
+    width: 40ch;
+}
+
+.container .Setup_body h1 {
+    margin: 3.5rem 0 1rem;
+    font-size: 3rem;
+    width: 20ch;
+}
+.container .Setup_body .world {
+    font-size: 1.3rem;
+    margin: 0 0 4rem;
+    font-weight: 800;
+}
+
+.container .Setup_body div {
+    padding: 0.7rem;
+    margin: 1.5rem 0;
+}
+
+.container .Setup_body div .steps {
+    font-weight: 800;
+}

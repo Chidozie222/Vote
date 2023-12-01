@@ -1,0 +1,7 @@
+.guest_form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1;
+    justify-content: center;
+    align-items: ;
+}

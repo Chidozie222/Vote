@@ -1,0 +1,4 @@
+.guest_form {
+    display: grid;
+    grid-template-columns: repeat(2, );
+}

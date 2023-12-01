@@ -1,0 +1,16 @@
+.voting_paltform {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0;
+        height: 90vh;
+        width: 70%;
+        background-color: rgba(255, 255, 255, 0.5);
+}
+
+.voting_paltform .side {
+    padding: 1rem 0 0 3rem;
+        background-color: #ebebeb;
+        height: 100%;
+        width: 80%;
+}

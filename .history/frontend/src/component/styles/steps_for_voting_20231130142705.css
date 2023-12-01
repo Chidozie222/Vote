@@ -1,0 +1,16 @@
+.container {
+    width: 70ch;
+    height: auto;
+    background-color: #e7e7e7;
+    color: #fff;
+    margin: 0;
+    padding: 7rem;
+}
+
+.container .Setup_body {
+    width: 40ch;
+}
+
+.container .Setup_body h1 {
+    margin: 0;
+}

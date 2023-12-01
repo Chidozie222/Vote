@@ -1,0 +1,23 @@
+.container {
+    width: 70ch;
+    height: auto;
+    background-color: #e7e7e7;
+    color: #000000;
+    margin: 0;
+    padding: 4rem;
+}
+
+.container .Setup_body {
+    width: 40ch;
+}
+
+.container .Setup_body h1 {
+    margin: 3.5rem 0 1rem;
+    font-size: 3rem;
+    width: 20ch;
+}
+.container .Setup_body .world {
+    font-size: 1.3rem;
+    margin: 0 0 2rem;
+    font-weight: 800;
+}

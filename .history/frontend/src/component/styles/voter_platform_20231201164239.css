@@ -1,0 +1,24 @@
+.voting_paltform {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        height: 90%;
+        background-color: rgba(255, 255, 255, 0.7);
+}
+
+.voting_paltform .side {
+    padding: 1rem 0 0 3rem;
+        background-color: #ebebeb;
+        height: 100%;
+        width: 80%;
+}
+
+.voting_paltform .voting_body .col-sm-6 img {
+    width: 20ch;
+    height: 20ch;
+}
+
+.voting_paltform .voting_body h1 

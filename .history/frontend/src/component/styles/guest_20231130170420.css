@@ -1,0 +1,52 @@
+.guest_form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 90%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.guest_form .side {
+    padding: 1.5rem 0 0 3rem;
+    background-color: #ebebeb;
+    height: 100%;
+    width: 80%;
+}
+
+.guest_form .guest {
+    width: 70ch;
+}
+
+.guest_form .guest h1 {
+    margin: 0;
+}
+
+.guest_form .guest hr {
+    width: 80%;
+    border: 0.2px solid #000;
+}
+
+.guest_form .guest form input {
+    background-color: #e8e8e8;
+    width: 58ch;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #908d8d;
+    margin: 3rem 0 4rem 0;
+    border-bottom: 5px solid #908d8d;
+    padding: 0 0 0 1rem;
+}
+
+.guest_form .guest form button {
+    width: 37ch;
+    border-radius: 0;
+    padding: 2rem 0;
+    background-color: rgb(238, 161, 29);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    font-weight: 800;
+}
