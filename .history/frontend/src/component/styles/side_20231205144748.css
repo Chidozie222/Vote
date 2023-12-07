@@ -1,0 +1,14 @@
+.div {
+          z-index: 1;
+          top: 0;
+          background: #2f323a;
+          margin-top: 70px;
+          padding-top: 30px;
+          position: fixed;
+          left: 0;
+          width: 250px;
+          height: 100%;
+          transition: 0.5s;
+          transition-property: left;
+          overflow-y: auto;
+]

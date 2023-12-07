@@ -1,0 +1,30 @@
+.div {
+          z-index: 1;
+          top: 0;
+          background: #d28f1c;
+          position: fixed;
+          left: 0;
+          width:25%;
+          height: 100vh;
+          transition: 0.5s;
+          transition-property: left;
+          overflow-y: auto;
+}
+
+.div .profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.div .profile {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.div .profile div {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

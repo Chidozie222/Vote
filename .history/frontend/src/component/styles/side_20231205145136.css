@@ -1,0 +1,16 @@
+.div {
+          z-index: 1;
+          top: 0;
+          background: #2f323a;
+          position: fixed;
+          left: 0;
+          width:30%;
+          height: 100vh;
+          transition: 0.5s;
+          transition-property: left;
+          overflow-y: auto;
+}
+
+.div .profile img {
+    wi
+}
