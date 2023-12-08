@@ -1,0 +1,86 @@
+.div {
+    background: #c7881c;
+    width: 100%;
+    transition: 0.5s;
+    transition-property: left;
+    padding: 1rem 3rem 1rem 1rem;
+    overflow-y: auto;  
+}
+
+.div .profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+}
+
+.div .profile {
+    display: flex;
+    float: right;
+}
+
+.div .profile div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0 1.5rem 0 0;
+}
+
+
+.div .profile div p{
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 800;
+    color: #fff;
+}
+
+.div .profile div a {
+    margin: 0;
+    
+}
+
+.div .profile div #user_name {
+    font-size: 1.5rem;
+}
+
+.div a {
+    color: #fff;
+    text-decoration: none;
+    margin: 3rem 0 3rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.div a i {
+    margin: 0 0.5rem;
+}
+
+#checkbox:checked ~ .div {
+    left: -175px;
+}
+
+
+
+#checkbox:checked ~ .div a span{
+    display: none;
+  }
+
+#checkbox:checked ~ .div a {
+    font-size: 20px;
+    margin-left: 265px;
+    width: 100%;
+}
+
+#checkbox:checked ~ .div .profile{
+    display: none;
+  }
+
+  .div label {
+    display: none;
+  }
+  
+
+  .div .side_div {
+    margin-top: 1rem;
+  }

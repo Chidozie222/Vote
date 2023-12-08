@@ -1,0 +1,21 @@
+.packages {
+        height: 90vh;
+            width: 70%;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+}
+
+.packages .packages_div {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.packages .packages_div h1 {
+    font-size: 2.5rem;
+    font
+}

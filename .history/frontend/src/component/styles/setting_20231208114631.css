@@ -1,0 +1,22 @@
+.setting {
+        height: 90vh;
+            width: 70%;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+}
+
+
+.setting .setting_file{
+    margin: 2rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.setting .setting_file img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}

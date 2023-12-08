@@ -1,0 +1,17 @@
+.voter_id {
+        height: 90vh;
+        width: 70%;
+        background-color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+
+.voter_id #Voter_header {
+    font-weight: 800;
+}
+
+.voter_id .voter_body {
+    display: grid;
+    grid-template-columns
+}

@@ -1,0 +1,179 @@
+:root {
+  --gold : #d28f1c;
+}
+
+.sign-in {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0;
+    height: 90vh;
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 2%;
+}
+
+.sign-in .siderbar {
+  height: 90vh;
+  width: 50ch;
+  background-color: rgb(238, 161, 29);
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.sign-in .siderbar img {
+  height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.sign-in .siderbar p {
+  width: 40ch;
+    text-align: center;
+}
+
+.sign-in .form_signin {
+  width: 90ch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in .form_signin nav {
+  width: 100%;
+    height: 7rem;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 0 2.7rem;
+    margin-top: 23px;
+}
+
+.sign-in .form_signin nav p {
+  display: inline;
+    font-size: 1.5rem;
+    float: right;
+    margin: 0 2rem;
+}
+
+.sign-in .form_signin nav a {
+  display: inline;
+    float: right;
+    margin: 0;
+}
+
+.sign-in .form_signin nav button {
+  padding: 1rem 1.5rem;
+    background: var(--gold);
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.sign-in .form_signin .form {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in .form_signin .form h1 {
+  text-align: center;
+  width: 100%;
+  margin: 0 0 3rem;
+  font-size: 2rem;
+}
+
+.sign-in .form_signin .form form .pass {
+  z-index: 2;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 52%;
+  right: 21%;
+}
+
+
+.sign-in .form_signin .form form input {
+  background-color: #e8e8e8;
+  width: 70ch;
+  border-radius: 4px;
+  box-shadow: none;
+  color: #908d8d;
+  margin: 3rem 0 0 0;
+  border-bottom: 5px solid #908d8d;
+  padding: 0 0 0 1rem;
+}
+
+.link {
+  width: 100%;
+}
+.link a {
+  margin: 0 2rem;
+}
+
+.sign-in .form_signin .form form button {
+  width: 100%;
+    margin: 3rem 0;
+    color: #fff;
+    font-weight: 800;
+    padding: 1.5rem 0;
+    background-color: var(--gold);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.sign-in .form_signin .form form .fa-arrow-right {
+  font-size: 3rem;
+  position: absolute;
+  top: 73%;
+  right: 22%;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1200px) {
+  .sign-in {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      grid-column-gap: 0;
+      height: 90vh;
+      width: 70%;
+      justify-content: center;
+      ali
+    }
+  .sign-in .siderbar {
+     display: none;
+    }
+
+    .sign-in .form_signin nav {
+      justify-content: left;
+      margin-top: 1rem;
+    }
+
+        .sign-in .form_signin nav p {
+          font-size: 1rem;
+          margin: 0 1rem;
+        }
+    
+        .sign-in .form_signin nav button {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+        }
+}
+
