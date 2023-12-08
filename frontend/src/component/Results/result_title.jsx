@@ -16,8 +16,15 @@ const Result_title = () => {
     }, [Useremail])
     return(
         <>
-            <Side/>
+        <div className="background">
+        <div className="first"></div>
+            <div className="second"></div>
+            <div className="third"></div>
+            <div className="fourth"></div>
+            <div className="fifth"></div>
+            <div className="sixth"></div>
             <div className="home">
+            <Side/>
                 <div className="home_body">
                     {Array.isArray(Title2.data) && Title2.data.length > 0 ? (
                         Title2.data.map((title) => (
@@ -33,6 +40,7 @@ const Result_title = () => {
 
                     
                 </div>
+            </div>
             </div>
         </>
     )

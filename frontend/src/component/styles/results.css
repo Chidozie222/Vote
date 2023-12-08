@@ -1,54 +1,61 @@
-.home_result{
-    width: 72%;
-    float: right;
+.home_result {
+    height: 90vh;
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-#Position_title_result{
-    margin: 23px 0 12px 34px;
+
+.home_result .home_body_result {
+    width: 100%;
+    padding: 3rem;
+    height: 70%;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.home_body_result{
-    margin: 34px 0 0 0;
-    padding: 23px;
+
+.home_result .home_body_result .Add_new_result {
+    width: 70%;
+    border: 2px solid #000;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem;
 }
-.Add_new_result{
-    width: 650px;
-    box-shadow: rgba(0, 0, 0, 0.5);
-    height: auto;
-    border: 1px solid #000;
-    margin: 35px 0;
-    padding: 20px 10px;
+
+.home_result .home_body_result .Add_new_result p {
+    font-size: 2rem;
+    font-weight: 800;
+    width: 20ch;
 }
-#poll_result{
-    display: inline;
-    font-size: x-large;
-    font-weight: 700;
-}
-#button_result{
-    float: right;
-    padding: 9px 16px;
-    background-color: #e69d1b;
+
+.home_result .home_body_result .Add_new_result button {
+    background-color: #d28f1c;
+    padding: 1rem 4rem;
     border: none;
     color: #fff;
-    border-radius: 13px;
-    box-shadow: 1px 4px 2px 3px rgba(0, 0, 0, 0.25), 1px 4px 2px 3px rgba(0, 0, 0, 0.25) inset;
+    font-size: 1.5rem;
+    font-weight: 800;
     cursor: pointer;
 }
-.div_result{
-    height: auto;
-    padding: 12px 20px;
+
+.home_result .home_body_result .Add_new_result .div_result {
+    margin-top: 3rem;
+    width: 100%;
 }
-.first_data_for_results{
-    display: inline-flex;
-    flex-direction: column;
-    margin: 0 0 0 12px;
-}
-#img-for-candidate{
+
+.home_result .home_body_result .Add_new_result .div_result img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
 }
-#result-candidateName{
-    display: inline;
-}
-#votes{
-    display: inline;
+
+.home_result .home_body_result .Add_new_result .div_result .first_data_for_results{
+    background-color: #e7e4e4;
+    padding: 2rem;
+    width: 30ch;
+    border: 2px solid #000;
+    border-radius: 4px
 }

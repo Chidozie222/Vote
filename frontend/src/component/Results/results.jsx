@@ -42,8 +42,16 @@ const Results = () => {
   console.log(results);
   return (
     <>
-      <Side />
+      
+      <div className="background">
+        <div className="first"></div>
+            <div className="second"></div>
+            <div className="third"></div>
+            <div className="fourth"></div>
+            <div className="fifth"></div>
+            <div className="sixth"></div>
       <div className="home_result">
+       <Side />
         <h1 id="Position_title_result">{Title}</h1>
         <div className="home_body_result">
           {positions.length > 0 ? (
@@ -78,7 +86,8 @@ const Results = () => {
           ) : (
             <h1>No data found</h1>
           )}
-        </div>
+        </div> 
+      </div>
       </div>
       </>
   );

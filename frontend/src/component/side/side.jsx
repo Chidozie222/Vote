@@ -81,28 +81,32 @@ const Side = () => {
         setActiveLink(linkId);
     };
     return (
-        <div className="div">
-            <input type="checkbox" name="checkbox" id="checkbox" />
-            <label htmlFor="checkbox">
-                <i className="fas fa-bars" id="sidebar_btn"></i>
-            </label>
-            {side(Userdata)}
-            <Link to={'/home'} onClick={() => handleLinkClick('dashboard')} className={activeLink === 'dashboard' ? 'active' : ''}>
-                <i className="fas fa-home"></i>Dashboard
-            </Link>
-            <Link to={'/results'} onClick={() => handleLinkClick('results')} className={activeLink === 'results' ? 'active' : ''}>
-                <i className="fas fa-poll-h"></i>Results
-            </Link>
-            <Link to={'/packages'} onClick={() => handleLinkClick('packages')} className={activeLink === 'packages' ? 'active' : ''}>
-                <i className="fas fa-archive"></i>Packages
-            </Link>
-            <Link to={'/voter-id'} onClick={() => handleLinkClick('voter-id')} className={activeLink === 'voter-id' ? 'active' : ''}>
-                <i className="fas fa-id-card"></i>Voter ID
-        </Link>
-            <Link to={'/settings'} onClick={() => handleLinkClick('settings')} className={activeLink === 'settings' ? 'active' : ''}>
-                <i className="fas fa-user-cog"></i>Settings
-            </Link>
-        </div>
+        <>
+            {/* <input type="checkbox" name="checkbox" id="checkbox" /> */}
+            <div className="div">
+                {side(Userdata)}
+                <div className="side_div">
+                    <Link to={'/home'} onClick={() => handleLinkClick('dashboard')} className={activeLink === 'dashboard' ? 'active' : ''}>
+                        <i className="fas fa-home"></i><span>Dashboard</span>
+                    </Link>
+                    <Link to={'/results'} onClick={() => handleLinkClick('results')} className={activeLink === 'results' ? 'active' : ''}>
+                        <i className="fas fa-poll-h"></i><span>Results</span>
+                    </Link>
+                    <Link to={'/packages'} onClick={() => handleLinkClick('packages')} className={activeLink === 'packages' ? 'active' : ''}>
+                        <i className="fas fa-archive"></i><span>Packages</span>
+                    </Link>
+                    <Link to={'/voter-id'} onClick={() => handleLinkClick('voter-id')} className={activeLink === 'voter-id' ? 'active' : ''}>
+                        <i className="fas fa-id-card"></i><span>Voter ID</span>
+                </Link>
+                    <Link to={'/settings'} onClick={() => handleLinkClick('settings')} className={activeLink === 'settings' ? 'active' : ''}>
+                        <i className="fas fa-user-cog"></i><span>Settings</span>
+                    </Link>
+                    <label htmlFor="checkbox">
+                        <i className="fas fa-bars" id="sidebar_btn"></i>
+                    </label>
+                </div>
+            </div>
+        </>
     );
 }
 

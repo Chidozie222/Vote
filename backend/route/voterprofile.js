@@ -69,7 +69,7 @@ voterprofile.post('/voter_platform-login', async(req, res) => {
     const {email, code, Title, Useremail} = req.body
     try{
         let useremail = await csvmodel.find({Useremail, Title, email})
-        if (useremail) {
+        if (useremail.length > 0) {
             for (let i = 0; i < useremail.length; i++) {
                 if (useremail[i].code == code) {
                     res.send({status: 'ok', message: 'User Vaild', data: useremail})

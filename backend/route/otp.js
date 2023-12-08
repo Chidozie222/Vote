@@ -28,22 +28,28 @@ otp.post('/sendotp', async (req, res) => {
 });
 
 otp.post('/verifyotp', async (req, res) => {
-    const { email, otp, PhoneNumber, Name, Useremail } = req.body;
+    const { email, otp, PhoneNumber, Name, Useremail, Title } = req.body;
     
     try {
         const OTP = await retrieveHashedOTPFromDatabase(email);
         const isValid = await verifyOTP(OTP);
         const code = PhoneNumber;
         if (isValid === otp) {
+            let data = Otp.find({Useremail, Title, email})
+            if( data.length > 0) {
+                res.send({status: 'error', message: 'user already exist'})
+            } else {
 
                         await Otp.create({
                             Name,
                             code,
                             email,
+                            Title,
                             Useremail
                         });
                         await deleteHashedOTP(email);
                         res.status(200).json({status: 'ok',  message: 'OTP verified successfully' });
+                    }
            
         } else {
             res.status(400).json({ message: 'Invalid OTP' });
